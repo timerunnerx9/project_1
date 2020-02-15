@@ -20,7 +20,7 @@ CHECK(user_role in('EMPLOYEE','FINANCE MANAGER')
 
 
 CREATE TABLE ers_users(
-ers_users_id NUMERIC PRIMARY KEY NOT NULL,
+ers_user_id SERIAL PRIMARY KEY NOT NULL,
 ers_username VARCHAR(50),
 ers_password VARCHAR(50),
 user_first_name VARCHAR(100),
@@ -32,14 +32,14 @@ UNIQUE(ers_username, user_email)
 
 
 CREATE TABLE ers_reimbursement(
-reimb_id NUMERIC PRIMARY KEY NOT NULL,
+reimb_id SERIAL PRIMARY KEY NOT NULL,
 reimb_amount NUMERIC,
 reimb_submitted TIMESTAMP,
 reimb_resolved TIMESTAMP,
 reimb_description VARCHAR(250),
 reimb_receipt BOOLEAN,
-reimb_author NUMERIC REFERENCES ers_users(ers_users_id),
-reimb_resolver NUMERIC REFERENCES ers_users(ers_users_id),
+reimb_author int REFERENCES ers_users(ers_user_id),
+reimb_resolver int REFERENCES ers_users(ers_user_id),
 reimb_status_id NUMERIC REFERENCES ers_reimbursement_status(reimb_status_id),
 reimb_type_id NUMERIC REFERENCES ers_reimbursement_type(reimb_type_id)
 )
