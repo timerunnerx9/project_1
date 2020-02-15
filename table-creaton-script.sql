@@ -13,7 +13,7 @@ CHECK(reimb_type IN('LODGING','TRAVEL','FOOD','OTHER'))
 
 CREATE TABLE ers_user_roles(
 ers_user_role_id NUMERIC PRIMARY KEY NOT NULL,
-user_role VARCHAR(10),
+user_role VARCHAR(20),
 CHECK(user_role in('EMPLOYEE','FINANCE MANAGER')
 )
 )
