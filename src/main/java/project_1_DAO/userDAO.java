@@ -9,9 +9,6 @@ import project_1.utils.ConnectionUtil;
 
 public class userDAO {
 
-	
-	
-	
 	public static Boolean varifyuser(String userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM ers_users WHERE userid = ?";
