@@ -29,7 +29,6 @@ public class Reimbursement {
 			int reimb_resolver,
 			int reimb_status_id,
 			int reimb_type_id) {
-		super();
 		this.reimb_id = reimb_id;
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
@@ -57,7 +56,7 @@ public class Reimbursement {
 			int reimb_status_id,
 			int reimb_type_id)
 	{
-		super();
+
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
 		this.reimb_resolved = reimb_resolved;
