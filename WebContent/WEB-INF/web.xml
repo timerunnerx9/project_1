@@ -5,4 +5,40 @@
     <welcome-file>project_1.html</welcome-file>
 
   </welcome-file-list>
+  
+  
+<!-- 
+  <servlet>
+  <servlet-name>UserServlet</servlet-name>
+  <servlet-class>project_1_servlets.UserServlet</servlet-class>
+  </servlet>
+  
+  
+  
+    <servlet-mapping>
+  <servlet-name>UserServlet</servlet-name>
+  <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  -->
+  
+  <!-- 
+  <servlet>
+  <servlet-name>ReimbServlet</servlet-name>
+  <servlet-class>project_1_servlets.ReimbServlet</servlet-class>
+  </servlet>
+  
+  
+
+    
+ <servlet-mapping>
+  <servlet-name>ReimbServlet</servlet-name>
+  <url-pattern>/ReimbServlet</url-pattern>
+</servlet-mapping>
+  
+  -->
+  
+  
+  
 </web-app>
+
+
