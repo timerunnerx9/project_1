@@ -7,6 +7,7 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private String email;
+	private int role_id;
 	
 	
 	
@@ -15,7 +16,6 @@ public class User {
 	//database will use the constructor below to create new object
 	public User(int user_id, String username, String password, String firstname, String lastname, String email,
 			int role_id) {
-		super();
 		this.user_id = user_id;
 		this.username = username;
 		this.password = password;
@@ -32,7 +32,6 @@ public class User {
 	
 	//we will call the below constructor with our input as parameters to create a transit object
 	public User(String username, String password, String firstname, String lastname, String email, int role_id) {
-		super();
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;
@@ -91,5 +90,5 @@ public class User {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
-	private int role_id;
+	
 }
