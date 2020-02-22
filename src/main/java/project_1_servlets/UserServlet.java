@@ -15,7 +15,8 @@ import project_1_service.UserService;
 /**
  * Servlet implementation class UserServlet
  */
-@WebServlet("/UserServlet")
+//@WebServlet("/UserServlet")
+
 public class UserServlet extends HttpServlet {
 //	public static void main(String[] args) {
 //		
@@ -28,19 +29,19 @@ public class UserServlet extends HttpServlet {
 	
 	
 	
-//	@Override
-//	public void init() throws ServletException {
-//		
-//		try {
-//			Class.forName("org.postgresql.Driver");
-//			
-//		}
-//		catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		super.init();
-//	}	
+	@Override
+	public void init() throws ServletException {
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+			
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		super.init();
+	}	
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,10 +58,7 @@ public class UserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		UserService userService = new UserService();
-		String jsonUser = userService.getUserJson(userDAO.getUser(1));
-//		response.setContentType("application/json");
-		response.getWriter().append(jsonUser);
+		response.getWriter().append(UserService.getUserJson(1));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
