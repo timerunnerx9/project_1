@@ -3,13 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
 export interface User{
-  user_id : number;
-  user_name: string;
-  user_password: number;
-  user_firstname: string;
-  user_last_name: string;
-  user_email: string;
-  user_role_id: number;
+  user_id : string;
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  role_id: string;
 }
 
 
@@ -27,6 +27,6 @@ export class UserService {
   getUser(): Promise<User>{
     const url = "http://localhost:8081/project_1/UserServlet";
     return this.httpClient.get<User>(url).toPromise();
-                                                                         
+
   }
 }
