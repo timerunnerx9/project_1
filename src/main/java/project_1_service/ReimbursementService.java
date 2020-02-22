@@ -1,4 +1,4 @@
-package projec1_service;
+package project_1_service;
 
 public class ReimbursementService {
 

@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import project_1.utils.ConnectionUtil;
 import project_1_baseClasses.User;
 
 public class userDAO {
-	
+	public static void main(String[] args) {
+		
+	}
 	
 	public static User getUser(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "SELECT * FROM ers_users WHERE uderid = ?";
+			String sql = "SELECT * FROM ers_users WHERE ers_user_id = ?"; //dummy testing
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, userid);
 			ResultSet result = statement.executeQuery();
@@ -47,9 +47,9 @@ public class userDAO {
 	
 	
 
-	public static Boolean varifyuser(int userid) {
+	public static Boolean verifyuser(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "SELECT * FROM ers_users WHERE userid = ?";
+			String sql = "SELECT * FROM ers_users WHERE ers_user_id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, userid);
 			
