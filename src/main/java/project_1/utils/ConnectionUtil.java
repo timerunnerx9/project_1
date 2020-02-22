@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionUtil {
 	public static Connection getConnection() {
 		String schemasetting = "?currentSchema=project_1";
-		String url = "database-1.cupazha4mqw8.us-east-2.rds.amazonaws.com"+schemasetting;
+		String url = "jdbc:postgresql://database-1.cupazha4mqw8.us-east-2.rds.amazonaws.com:5432/postgres"+schemasetting;
 		String user = "davecen9";
 		String password = "294597053";
 		
