@@ -9,10 +9,8 @@ import project_1.utils.ConnectionUtil;
 import project_1_baseClasses.User;
 
 public class userDAO {
-	public static void main(String[] args) {
-		
-	}
-	
+	public static void main(String[] args) {		
+	}	
 	public static User getUser(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = "SELECT * FROM ers_users WHERE ers_user_id = ?"; //dummy testing
@@ -30,22 +28,12 @@ public class userDAO {
 				
 				return new User(user_id, username, password, firstname, lastname, email,
 				role_id);
-			}
-			
-			
+			}				
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 
 	public static Boolean verifyuser(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
@@ -60,8 +48,7 @@ public class userDAO {
 			}
 			else {
 				return false;
-			}
-			
+			}	
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
