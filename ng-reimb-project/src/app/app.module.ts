@@ -8,7 +8,7 @@ import { UserComponent } from './components/user/user.component';
 import { ReimbComponent } from './components/reimb/reimb.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './services/user.service';
-
+import {ReimbService} from './services/reimb.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,7 @@ import {UserService} from './services/user.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, ReimbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
