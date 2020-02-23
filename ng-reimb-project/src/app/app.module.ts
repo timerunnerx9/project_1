@@ -11,6 +11,7 @@ import {UserService} from './services/user.service';
 import {ReimbService} from './services/reimb.service';
 import {LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {LoginService} from './services/login.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService, ReimbService, LoginService],
   bootstrap: [AppComponent]

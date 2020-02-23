@@ -13,15 +13,14 @@
     
 
     <div align="center" id="login">
-    <form >
+    <form #form = "ngForm">
         <div class="form-group">
-          <label for="exampleInputEmail1">User ID</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <small id="emailHelp" class="form-text text-muted"></small>
+          <label for="userid">User ID</label>
+          <input type="text" class="form-control" id="userid" >
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="UserPassword">Password</label>
+          <input type="password" class="form-control" id="UserPassword" >
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">

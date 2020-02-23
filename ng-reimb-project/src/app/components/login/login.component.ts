@@ -9,14 +9,23 @@ import {LoginService, LoginInfo} from 'src/app/services/login.service'
 })
 export class LoginComponent implements OnInit {
 
+
+
+
+
+
+  userid = 0;
+  userPassword ='';
+
   constructor(private loginService : LoginService) { }
 
   ngOnInit(): void {
   }
 
 
+ 
 
-  
+
 
 
 
