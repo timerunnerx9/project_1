@@ -4,19 +4,30 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import project_1_service.UserService;
 
 
-@WebServlet("/UserServlet")
-public class UserServlet extends HttpServlet {
-
+public class LoginServlet extends HttpServlet{
 	
-
+	public void init() throws ServletException {
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+			
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		super.init();
+	}	
+	
+	
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,18 +40,27 @@ public class UserServlet extends HttpServlet {
 		super.service(req, resp);
 		
 	}
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
+		String username = request.getParameter("userName");
+		String password = request.getParameter("password");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
+		session.setAttribute("password", password);
+		
 		out.print(UserService.getUserJson(1));
 		out.flush();
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		
 	}
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		doGet(request,response);
+	}
+	
 }

@@ -9,12 +9,16 @@ import { ReimbComponent } from './components/reimb/reimb.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './services/user.service';
 import {ReimbService} from './services/reimb.service';
+import {LoginComponent } from './components/login/login.component';
+import {LoginService} from './services/login.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     ContentComponent,
     UserComponent,
     ReimbComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -22,7 +26,7 @@ import {ReimbService} from './services/reimb.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [UserService, ReimbService],
+  providers: [UserService, ReimbService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
