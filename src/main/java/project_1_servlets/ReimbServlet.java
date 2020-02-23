@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ReimbursementServlet
  */
-@WebServlet("/ReimbServlet")
+//@WebServlet("/ReimbServlet")
 public class ReimbServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ReimbServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+//	private static final long serialVersionUID = 1L;
+      
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		resp.addHeader("Access-Control-Allow-Headers", "authorization");
+		resp.addHeader("Access-Control-Allow-Headers", "*");
+		resp.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+		resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		super.service(req, resp);
+		
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +37,7 @@ public class ReimbServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.getWriter().append("it works");
 	}
 
 }
