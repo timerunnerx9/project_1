@@ -14,12 +14,7 @@ import {LoginService} from './services/login.service';
 import {FormsModule} from '@angular/forms';
 import { Routes } from '@angular/router';
 
-const routes : Routes = [
-  {component:LoginComponent, path:""},
-  {component:UserComponent, path:"/user"},
-  {component:ReimbComponent, path:"/reimb"}
-  
-]
+
 
 @NgModule({
   declarations: [
@@ -28,7 +23,7 @@ const routes : Routes = [
     UserComponent,
     ReimbComponent,
     LoginComponent,
-    
+  
   ],
   imports: [
     BrowserModule,
