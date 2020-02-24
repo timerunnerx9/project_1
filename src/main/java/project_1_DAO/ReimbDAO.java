@@ -6,11 +6,11 @@ import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import project_1.utils.ConnectionUtil;
-import project_1_baseClasses.Reimbursement;
+import project_1_POJO.Reimb;
 
 
-public class reimbursementDAO {
-	public static Reimbursement extractRecord(ResultSet result) throws SQLException{
+public class ReimbDAO {
+	public static Reimb extractRecord(ResultSet result) throws SQLException{
 		int reimb_id = result.getInt("reimb_id");
 		Double reimb_amount = result.getDouble("reimb_amount");
 		Timestamp reimb_submitted = result.getTimestamp("reimb_submitted");
@@ -21,7 +21,7 @@ public class reimbursementDAO {
 		int reimb_resolver = result.getInt("reimb_resolver");
 		int reimb_status_id = result.getInt("reimb_status_id");
 		int reimb_type_id = result.getInt("reumb_type_id");
-		return new Reimbursement(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, description,
+		return new Reimb(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, description,
 							reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id);
 	}
 	
@@ -29,7 +29,7 @@ public class reimbursementDAO {
 	
 	
 	
-	public static Reimbursement createRecord(int userid, Reimbursement r) {
+	public static Reimb createRecord(int userid, Reimb r) {
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = "INSERT INTO ers_reimbursement (reimb_id, reimb_amount, reimb_submitted, reimb_resolved, description,"
 					+ " reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id) "

@@ -1,4 +1,4 @@
-package project_1_baseClasses;
+package project_1_POJO;
 
 public class User {
 	private int user_id;//serial type, generated from database

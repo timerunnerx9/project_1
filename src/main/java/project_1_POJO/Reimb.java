@@ -1,7 +1,7 @@
-package project_1_baseClasses;
+package project_1_POJO;
 import java.sql.Timestamp;
 
-public class Reimbursement {
+public class Reimb {
 
 	private int reimb_id;//serial type, generated from database
 	private Double reimb_amount;
@@ -18,7 +18,7 @@ public class Reimbursement {
 	
 	
 	//database will use the constructor below to create new object
-	public Reimbursement(
+	public Reimb(
 			int reimb_id,
 			Double reimb_amount,
 			Timestamp reimb_submitted,
@@ -45,7 +45,7 @@ public class Reimbursement {
 	
 	
 	//we will call the below constructor with our input as parameters to create a transit object
-	public Reimbursement(
+	public Reimb(
 			Double reimb_amount,
 			Timestamp reimb_submitted,
 			Timestamp reimb_resolved,
