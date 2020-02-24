@@ -10,6 +10,20 @@ import project_1_POJO.Reimb;
 
 
 public class ReimbDAO {
+	
+	
+	public static Reimb viewPastTickets(int reimb_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			String sql =  "SELECT * FROM ers_reimbursement";
+			PreparedStatement statement = connection.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
 	public static Reimb extractRecord(ResultSet result) throws SQLException{
 		int reimb_id = result.getInt("reimb_id");
 		Double reimb_amount = result.getDouble("reimb_amount");
@@ -55,4 +69,5 @@ public class ReimbDAO {
 		}
 		return null;
 	}
+	
 }
