@@ -18,11 +18,12 @@ export class LoginService {
 
 
 
-loginVerification(postdata :{userid:number, userpassword:string}): Observable<User> {
+loginVerification(postdata :{username:string, userpassword:string}): Observable<User> {
   const url = "http://localhost:8081/project_1/LoginServlet"
   return this.httpClient.post<User>(url,postdata,{
     headers: new HttpHeaders({
       'Content-Type':'application/json'
+      // 'Content-Type':'text'
     })
   });
 

@@ -3,7 +3,7 @@ package project_1.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import project_1_DAO.userDAO;
+import project_1_DAO.UserDAO;
 
 public class JsonUtil {
 //	public static void main(String[] args) {

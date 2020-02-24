@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import project_1_service.UserService;
+import project_1_services.UserService;
 
 
 @WebServlet("/UserServlet")
@@ -34,7 +34,7 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		out.print(UserService.getUserJson(1));
+		out.print(UserService.getUserJson("davecen9"));
 		out.flush();
 	}
 
