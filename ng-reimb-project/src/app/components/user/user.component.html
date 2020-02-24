@@ -1,7 +1,10 @@
+
 <p>user works!</p>
-<button (click) ="click()">trying</button>
 
-<p>{{user.id}}</p>
-<p>{{user.username}}</p>
+<a [routerLink]="['/reimb']" routerLinkActive="router-link-active" >
+<button>routing to reimb</button></a>
 
-<p>{{user.password}}</p>
+
+<a [routerLink]="['/login']" routerLinkActive="router-link-active" >
+    <button>routing to login</button></a>
+
