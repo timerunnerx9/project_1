@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
+import project_1_DAO.LoginInfoDAO;
 import project_1_POJO.LoginInfo;
+import project_1_POJO.User;
 import project_1_services.UserService;
 
 
@@ -51,12 +54,12 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		String username = request.getParameter("userName");
-		String password = request.getParameter("password");
-		
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
-		session.setAttribute("password", password);
+//		String username = request.getParameter("userName");
+//		String password = request.getParameter("password");
+//		
+//		HttpSession session = request.getSession();
+//		session.setAttribute("username", username);
+//		session.setAttribute("password", password);
 		
 		out.print(UserService.getUserJson("davecen9"));
 		out.flush();
@@ -65,32 +68,29 @@ public class LoginServlet extends HttpServlet{
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		ObjectMapper om = new ObjectMapper();
 		response.setContentType("application/json");
 
 		PrintWriter out = response.getWriter();
-//		Object obj = om.readValue(request.getReader(), Object.class);
-		BufferedReader reader = request.getReader();
-
-		String line = reader.readLine();
-
-//		System.out.println(obj);
-//		System.out.println(wtf);
-		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
-		System.out.println(loginInfo);
+//		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
+		LoginInfo loginInfo = new Gson().fromJson(request.getReader(), LoginInfo.class);
 		
-//		String username = loginInfo.getUsername();
-//		String password = loginInfo.getUserPassword();
-//		System.out.println(username);
-//		System.out.println(password);
-		
+		String username = loginInfo.getUsername();
+		String password = loginInfo.getUserPassword();
+//
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(UserService.getUserJson(username));
+		out.print(UserService.getUserJson(username));
+	
+//		out.flush();
 //		if(LoginInfoDAO.verifyuser(username, password)){
 //			HttpSession session = request.getSession();
 //			session.setAttribute("username", username);
 //			session.setAttribute("password", password);
-//			
-//			out.print(UserService.getUserJson(username));
+//			out.print(UserService.getUserJson("davecen9"));
+//			out.print(user);
 //			out.flush();
+
 //		}
 //		else {
 //			response.setStatus(404);

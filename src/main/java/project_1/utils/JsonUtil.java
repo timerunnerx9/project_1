@@ -2,6 +2,7 @@ package project_1.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 
 import project_1_DAO.UserDAO;
 
@@ -11,12 +12,12 @@ public class JsonUtil {
 //	}
 //	
 	public static String javaToJson(Object obj) {
-		ObjectMapper om = new ObjectMapper();
+//		ObjectMapper om = new ObjectMapper();
 		
 		String jsonString ="";
 		
 		try {
-			 jsonString = om.writeValueAsString(obj);
+			 jsonString = new Gson().toJson(obj);
 			 
 		} catch (Exception e) {
 			
