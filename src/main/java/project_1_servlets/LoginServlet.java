@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import project_1_service.UserService;
 
 
@@ -33,7 +35,8 @@ public class LoginServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		
-		resp.addHeader("Access-Control-Allow-Headers", "authorization");
+//		resp.addHeader("Access-Control-Allow-Headers", "authorization");
+		resp.addHeader("Access-Control-Allow-Headers", "*");
 		resp.addHeader("Access-Control-Allow-Methods", "GET POST PUT DELETE");
 		resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 		
@@ -60,7 +63,24 @@ public class LoginServlet extends HttpServlet{
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		doGet(request,response);
+		ObjectMapper om = new ObjectMapper();
+//		response.setContentType("application/json");
+		response.setContentType("text");
+		PrintWriter out = response.getWriter();
+		 Object obj = om.readValue(request.getReader(), Object.class);
+		String username = request.getParameter("userid");
+		String password = request.getParameter("userpassword");
+		System.out.println(obj);
+		System.out.println(username);
+
+	
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
+		session.setAttribute("password", password);
+		
+		out.print(UserService.getUserJson(1));
+		out.flush();
+		
 	}
 	
 }
