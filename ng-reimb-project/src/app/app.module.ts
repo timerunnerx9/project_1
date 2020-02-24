@@ -12,6 +12,14 @@ import {ReimbService} from './services/reimb.service';
 import {LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
 import {FormsModule} from '@angular/forms';
+import { Routes } from '@angular/router';
+
+const routes : Routes = [
+  {component:LoginComponent, path:""},
+  {component:UserComponent, path:"/user"},
+  {component:ReimbComponent, path:"/reimb"}
+  
+]
 
 @NgModule({
   declarations: [
