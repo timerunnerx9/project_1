@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContentComponent } from './components/content/content.component';
-import { UserComponent } from './components/user/user.component';
+import { HomeComponent } from './components/home/home.component';
 import { ReimbComponent } from './components/reimb/reimb.component';
 import {HttpClientModule} from '@angular/common/http';
 import {UserService} from './services/user.service';
@@ -21,7 +21,7 @@ import { NavComponent } from './components/nav/nav.component';
   declarations: [
     AppComponent,
     ContentComponent,
-    UserComponent,
+    HomeComponent,
     ReimbComponent,
     LoginComponent,
     NavComponent,
