@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './components/user/user.component';
+import { HomeComponent } from './components/home/home.component';
 import { ReimbComponent } from './components/reimb/reimb.component';
 import { LoginComponent } from './components/login/login.component';
 
 
 const routes : Routes = [
   {component:LoginComponent, path:'login'},
-  {component:UserComponent, path:'user'},
+  {component:HomeComponent, path:'home'},
   {component:ReimbComponent, path:'reimb'}
   
 ]

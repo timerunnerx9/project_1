@@ -24,12 +24,8 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
+  
 
-  // getUser(): Promise<User>{
-  //   const url = "http://localhost:8081/project_1/UserServlet";
-  //   return this.httpClient.get<User>(url).toPromise();
-
-  // }
 
 
 

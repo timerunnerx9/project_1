@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>project_1_login</title>
-</head>
-<body>
+  <app-home [rs]="testing"></app-home>
     <h1 align = "center" id = "heading1">You Wish Reimbursement System</h1>
     <div align="center" id="login">
     <form (ngSubmit)="onSubmit()" #f="ngForm">
@@ -32,8 +25,4 @@
         [disabled]="!f.valid">Login</button>
       </form>
       </div>
-      
-
    
-</body>
-</html>
