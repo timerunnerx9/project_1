@@ -8,6 +8,7 @@ import { User } from './user.service';
   providedIn: 'root'
 })
 export class LoginService {
+
   userChanged = new Subject<User>();
 
   private user:User ={
@@ -25,6 +26,12 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { 
 
   }
+
+
+getUser(){
+  return this.user;
+}
+
 
 
 loginVerification(postdata :{username:string, userpassword:string}): void {

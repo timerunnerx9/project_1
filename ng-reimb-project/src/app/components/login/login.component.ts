@@ -39,7 +39,13 @@ loginInfo={
     this.loginInfo.username=this.loginForm.value.username;
     this.loginInfo.userpassword=this.loginForm.value.userpassword;
     this.loginService.loginVerification(this.loginInfo)
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home'])
+    // this.loginService.userChanged.subscribe(
+    //   (val)=>this.router.navigate(['/home']),
+    //   (err)=>err
+    // )
+
+    
   }
 
 }
