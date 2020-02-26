@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
 		
+//		ObjectMapper om = new ObjectMapper();
 //		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
 		
 		PrintWriter out = response.getWriter();
