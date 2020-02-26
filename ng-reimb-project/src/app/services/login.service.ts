@@ -9,6 +9,8 @@ import { User } from './user.service';
 })
 export class LoginService {
 
+
+
   userChanged = new Subject<User>();
 
   private user:User ={
@@ -48,7 +50,8 @@ loginVerification(postdata :{username:string, userpassword:string}): void {
     this.user.firstname=val.firstname,
     this.user.lastname = val.lastname,
     this.user.email=val.email,
-    this.user.role_id=val.role_id}
+    this.user.role_id=val.role_id},
+    error => console.log(error)
   )
   
     this.userChanged.next(this.user);
