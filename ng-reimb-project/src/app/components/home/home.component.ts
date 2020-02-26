@@ -12,16 +12,16 @@ import { User } from 'src/app/services/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  user: User=
-  {
-    user_id: 0,
-    username: '',
-    password: '',
-    firstname:'',
-    lastname:'',
-    email:"",
-    role_id:0
-  }
+  user: User;
+  // {
+  //   user_id: 0,
+  //   username: '',
+  //   password: '',
+  //   firstname:'',
+  //   lastname:'',
+  //   email:"",
+  //   role_id:0
+  // }
 
     private userChangedSub: Subscription;
 
@@ -32,21 +32,27 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.userChangedSub = this.loginService.userChanged
     .subscribe(
-      (newuser:User)=>{
-        // this.user = newuser);
-        this.user.user_id =newuser.user_id,
-        this.user.username=newuser.username,
-        this.user.password=newuser.password,
-        this.user.firstname=newuser.firstname,
-        this.user.lastname = newuser.lastname,
-        this.user.email=newuser.email,
-        this.user.role_id=newuser.role_id}
+      (newuser:User)=> {
+        this.user = newuser;
+        // this.user.user_id =newuser.user_id,
+        // this.user.username=newuser.username,
+        // this.user.password=newuser.password,
+        // this.user.firstname=newuser.firstname,
+        // this.user.lastname = newuser.lastname,
+        // this.user.email=newuser.email,
+        // this.user.role_id=newuser.role_id}
+        console.log(newuser)})
+    // );
 
-    );
+    console.log(this.user);
    
-   // console.log(this.user.username);
+    this.user = this.loginService.getUser();
+    console.log(this.user);
     
-  // console.log(this.user);
+  // 
   // }
+  
 }
+
+
 }
