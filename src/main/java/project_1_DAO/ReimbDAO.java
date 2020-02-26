@@ -11,6 +11,29 @@ import project_1_POJO.Reimb;
 
 public class ReimbDAO {
 	
+	public static Reimb finManUpdateRecord(int reimb_id) {
+		try(Connection connection = ConnectionUtil.getConnection()){
+			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE   "
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
+	public static Reimb viewEmpPastTickets(int reimb_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 	
 	public static Reimb viewPastTickets(int reimb_id) {
 		try(Connection connection =  ConnectionUtil.getConnection()){
