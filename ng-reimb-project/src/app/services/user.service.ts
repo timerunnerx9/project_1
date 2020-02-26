@@ -14,9 +14,6 @@ export interface User{
 }
 
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -25,10 +22,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   
-
-
-
-
   getUser(): void{
     const url = "http://localhost:8081/project_1/UserServlet";
     this.httpClient.get<User>(url).subscribe(val=>console.log(val));
