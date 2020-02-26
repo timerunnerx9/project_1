@@ -1,1 +1,44 @@
-<h1>this line shows the routing works</h1>
+
+    <title>Reimbursement Form</title>
+
+    <h1 align = "center" id = "heading1">Reimbursement Form </h1>
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Select Reimbursement Type
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" type="button">Lodging</a>
+          <a class="dropdown-item" type="button">Travel</a>
+          <a class="dropdown-item" type="button">Food</a>
+          <a class="dropdown-item" type="button">Other</a>
+        </div>
+      </div>
+
+    <form (ngSubmit)="onSubmit()" #f="ngForm">          
+        <div class="form-group">
+          <label for="reimb_amount">Reimbursement Amount:</label>
+          <input type="text" class="form-control" id="reimb_amount"
+          placehoder = "Reimbursement Amount"
+          ngModel name = "reimb_amount"
+          required>
+        </div>
+        <div class="form-group">
+          <label for="reimb_description">Reimbursement Description:</label>
+          <input type="text" class="form-control" id="reimb_description"
+          placehoder = "Reimbursement Description"
+          ngModel name = "reimb_description"
+          required >
+        </div>
+        <div class = "form-group">
+          <label for = "reimb_author">Reimbursement Author:</label>  
+            <input type= "text" class = "form-control" id="reimb_author"
+            placehoder = "Reimbursement Author"
+            ngModel name = "reimb_author"
+            required>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+       
