@@ -1,6 +1,7 @@
-    <h1 align = "center" id = "heading1">Reem System</h1>
+    
     <div align="center" id="login">
-    <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <h1 align = "center" id = "heading1">Reem System</h1>
+    <form (ngSubmit)="onSubmit()" #f1="ngForm">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" class="form-control" id="username" 
@@ -20,7 +21,7 @@
           <label class="form-check-label" for="exampleCheck1">Remember Me</label>
         </div>
         <button type="submit" class="btn btn-primary"
-        [disabled]="!f.valid">Login</button>
+        [disabled]="!f1.valid">Login</button>
       </form>
       </div>
 

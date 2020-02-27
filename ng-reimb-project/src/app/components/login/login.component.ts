@@ -8,9 +8,7 @@ import { HttpParams } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  // template: ''
- 
+  styleUrls: ['./login.component.css']
 })
 
 
@@ -22,7 +20,7 @@ import { HttpParams } from '@angular/common/http';
 
 export class LoginComponent implements OnInit {
  
-@ViewChild("f") loginForm:NgForm;
+@ViewChild("f1") loginForm:NgForm;
 
 constructor(
   private loginService : LoginService,

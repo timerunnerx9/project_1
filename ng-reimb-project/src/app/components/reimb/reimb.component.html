@@ -1,40 +1,124 @@
 
-    <title>Reimbursement Form</title>
 
-    <h1 align = "center" id = "heading1">Reimbursement Form </h1>
-    <div class="btn-group">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select Reimbursement Type
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" type="button">Lodging</a>
-          <a class="dropdown-item" type="button">Travel</a>
-          <a class="dropdown-item" type="button">Food</a>
-          <a class="dropdown-item" type="button">Other</a>
+    <title>Reimbursement</title>
+    <h3> Reimbursement History</h3>
+
+
+    
+    <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Type</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-toggle="collapse" href="#dropdownopt">
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          
+        </tr>
+        <tr>
+          <div class="collapse" id ="dropdownopt">
+            <p>
+              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Link with href
+              </a>
+              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Button with data-target
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+            </div>
+        </tr>
+        <tr data-toggle="collapse" href="#dropdownopt">
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr data-toggle="collapse" href="#dropdownopt">
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+<!-- 
+    <div class="collapse" id ="dropdownopt">
+    <p>
+      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Link with href
+      </a>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Button with data-target
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+      </div>
+    </div>
+    </div> -->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>
+      <button class="btn btn-primary" type="button" data-toggle="collapse" href="#reimbForm" aria-expanded="false" aria-controls="collapseExample">
+        Add Reimbursement Request
+      </button>
+    </p>
+    <div class="collapse" id ="reimbForm">
+    <form (ngSubmit)='onSubmit' #f2='ngForm' id=reimbForm>
+      <div class="form-row"  >
+        <div class="form-group col-md-2">
+          <label for="reimbType">Types</label>
+          <select id="reimbType" (change)="dropDownHandler($event)" class="form-control">
+            <option  selected >Choose...</option>
+            <option value = "Lodging">Lodging</option>
+            <option value = "Travel">Travel</option>
+            <option value = "Food">Food</option>
+            <option value ="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="reimbAmount">Amount</label>
+          <input type="number" class="form-control" id="reimbAmount" name ='reimbAmount'>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="reimbDescription">Description</label>
+          <input type="text" class="form-control" id="reimbDescription" name = 'reimbDescription'>
         </div>
       </div>
-
-    <form (ngSubmit)="onSubmit()" #f="ngForm">          
-        <div class="form-group">
-          <label for="reimb_amount">Reimbursement Amount:</label>
-          <input type="text" class="form-control" id="reimb_amount"
-          placehoder = "Reimbursement Amount"
-          ngModel name = "reimb_amount"
-          required>
-        </div>
-        <div class="form-group">
-          <label for="reimb_description">Reimbursement Description:</label>
-          <input type="text" class="form-control" id="reimb_description"
-          placehoder = "Reimbursement Description"
-          ngModel name = "reimb_description"
-          required >
-        </div>
-        <div class = "form-group">
-          <label for = "reimb_author">Reimbursement Author:</label>  
-            <input type= "text" class = "form-control" id="reimb_author"
-            placehoder = "Reimbursement Author"
-            ngModel name = "reimb_author"
-            required>
-        </div>
+      <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
+    </form>
   
-       
+   
+
+
+
+        
