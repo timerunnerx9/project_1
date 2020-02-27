@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { User } from './user.service';
 
@@ -36,13 +36,16 @@ getUser(){
 
 
 
-loginVerification(postdata :{username:string, userpassword:string}): void {
+loginVerification(username:string, password:string): void {
   const url = "http://localhost:8081/project_1/LoginServlet"
-   this.httpClient.post<User>(url,postdata,{
-    headers: new HttpHeaders({
-      'Content-Type':'application/json'
-    })
-  }).subscribe((val)=>
+
+   let params = new HttpParams()
+        .set("name",username)
+        .set("password",password)
+
+
+  this.httpClient.post<User>(url,params)
+    .subscribe((val)=>
   {
     this.user.user_id =val.user_id,
     this.user.username=val.username,
@@ -55,7 +58,6 @@ loginVerification(postdata :{username:string, userpassword:string}): void {
   )
   
     this.userChanged.next(this.user);
-    console.log(this.user);
 
   }
 

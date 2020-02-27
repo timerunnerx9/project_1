@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReimbService } from 'src/app/services/reimb.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reimb',
@@ -7,32 +8,24 @@ import { ReimbService } from 'src/app/services/reimb.service';
   styleUrls: ['./reimb.component.css']
 })
 export class ReimbComponent implements OnInit {
-
-reimb ={
-  reimb_id:"",
-  reimb_amount:""
-  // reimb_submitted:"",
-  // reimb_resolved:"",
-  // reimb_description:"",
-  // reimb_receipt:"",
-  // reimb_author:"",
-  // reimb_resolver:"",
-  // reimb_status_id:"",
-  // reimb_type_id:""
-
-}
+  @ViewChild('f2')
+  reimbForm : NgForm;
+  type:string;
 
 
   constructor(private reimbService:ReimbService) { }
 
   ngOnInit(): void {
+   
   }
 
 
-  async test(){
-    console.log((await this.reimbService.onCreateReimb()));
-  }
+dropDownHandler (event:any){
+  this.type=event.target.value;
+}
 
 
-
+onSubmit(){
+  this.reimbForm.value.rei
+}
 }

@@ -9,23 +9,25 @@ input.ng-invalid.ng-touched{
     border: 1px solid red;
   }
   
-#heading1{
 
+#heading1{
+    width: 7em;
     font-size: 50px;
     font-weight:bold;
     position: relative;
-    top: 10%;
-
-
+    margin-top: 40px;
+    margin-bottom: 40px;
+    top: 20%;
+    right: 12%;
     align-items: center;
     
 }
 
 #login{
-    width: 20vw;
+    width: 17em;
     position: relative;
     margin-top: 10%;
-
-    left: 38%;
+    left: 37%;
+    align-items: center;
   
 }

@@ -61,22 +61,27 @@ public class LoginServlet extends HttpServlet{
 		
 		PrintWriter out = response.getWriter();
 
-		LoginInfo loginInfo = new Gson().fromJson(request.getReader(), LoginInfo.class);
-		String username = loginInfo.getUsername();
-		String password = loginInfo.getUserPassword();
+//		LoginInfo loginInfo = new Gson().fromJson(request.getReader(), LoginInfo.class);
+		
+//		String username = loginInfo.getUsername();
+//		String password = loginInfo.getUserPassword();
 
 //		System.out.println(username);
 //		System.out.println(password);
 //		System.out.println(UserService.getUserJson(username));
 //		out.print(UserService.getUserJson(username));
 //	
-	
+//		System.out.println(request.getReader().readLine());
+//		String querystring = request.getQueryString();
+		String username = request.getParameter("name");
+		String password = request.getParameter("password");
+
 		if(LoginInfoDAO.verifyuser(username, password)){
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
 			out.print(UserService.getUserJson(username));
-			
+//			
 		}
 		else {
 			response.setStatus(404);
