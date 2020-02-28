@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import project_1_DAO.LoginInfoDAO;
+import project_1_DAO.UserDAO;
 import project_1_POJO.LoginInfo;
 import project_1_services.UserService;
 
@@ -78,10 +79,8 @@ public class LoginServlet extends HttpServlet{
 
 		if(LoginInfoDAO.verifyuser(username, password)){
 			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
-			session.setAttribute("password", password);
+			session.setAttribute("userid", UserDAO.getUserByUsername(username).getUser_id());
 			out.print(UserService.getUserJson(username));
-//			
 		}
 		else {
 			response.setStatus(404);

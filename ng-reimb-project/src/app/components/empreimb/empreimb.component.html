@@ -1,0 +1,84 @@
+
+
+    <title>Reimbursement</title>
+    <h3> Reimbursement History</h3>
+
+    <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Type</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Author</th>
+          <th scope="col">Submitted Time</th>
+          <th scope="col" width = "18%" >Description</th>
+          <th scope="col">Receipt</th>
+          <th scope="col">Status</th>
+          <th scope="col">Resolver</th>
+          <th scope="col">Resolved Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-toggle="collapse">
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+
+        <tr data-toggle="collapse">
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+
+  
+   
+
+    <p>
+      <button id= "addReimbbtn" class="btn btn-primary" type="button" data-toggle="collapse" href="#reimbForm" aria-expanded="false" aria-controls="collapseExample">
+        Add Reimbursement Request
+      </button>
+    </p>
+    <div class="collapse" id="reimbForm">
+    <form (ngSubmit)='onSubmit' #f2='ngForm'>
+      <div class="form-row"  >
+        <div class="form-group col-md-2">
+          <label for="reimbType">Types</label>
+          <select id="reimbType" (change)="dropDownHandler($event)" class="form-control">
+            <option  selected >Choose...</option>
+            <option value = "Lodging">Lodging</option>
+            <option value = "Travel">Travel</option>
+            <option value = "Food">Food</option>
+            <option value ="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="reimbAmount">Amount</label>
+          <input type="number" class="form-control" id="reimbAmount" name ='reimbAmount'>
+        </div>
+        <div class="form-group col-md-7">
+          <label for="reimbDescription">Description</label>
+          <input type="text" class="form-control" id="reimbDescription" name = 'reimbDescription'>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
+    </form>
+  
+   
+
+
+
+        
