@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import project_1_services.ReimbService;
 
-@WebServlet("/ReimbServlet")
+@WebServlet("/ReimbServlet/*")
 public class ReimbServlet extends HttpServlet {
 
       
