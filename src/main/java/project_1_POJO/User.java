@@ -47,7 +47,7 @@ public class User {
 
 
 
-
+// ide generated getters/setters based on project requirements file. 
 	public int getUser_id() {
 		return user_id;
 	}
