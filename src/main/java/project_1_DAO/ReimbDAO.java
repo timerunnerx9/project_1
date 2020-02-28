@@ -13,7 +13,7 @@ public class ReimbDAO {
 	
 	public static Reimb finManUpdateRecord(int reimb_id) {
 		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE   "
+			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE ";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
