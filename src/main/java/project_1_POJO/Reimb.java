@@ -17,7 +17,7 @@ public class Reimb {
 	
 	
 	
-	//database will use the constructor below to create new object
+	//DAO will use the constructor below to create new object to send back to servlet
 	public Reimb(
 			int reimb_id,
 			Double reimb_amount,
@@ -48,22 +48,18 @@ public class Reimb {
 	public Reimb(
 			Double reimb_amount,
 			Timestamp reimb_submitted,
-			Timestamp reimb_resolved,
 			String description,
 			Boolean reimb_receipt,
 			int reimb_author,
-			int reimb_resolver,
 			int reimb_status_id,
 			int reimb_type_id)
 	{
 
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
-		this.reimb_resolved = reimb_resolved;
 		this.description = description;
 		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
-		this.reimb_resolver = reimb_resolver;
 		this.reimb_status_id = reimb_status_id;
 		this.reimb_type_id = reimb_type_id;
 	}

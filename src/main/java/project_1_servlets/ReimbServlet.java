@@ -1,14 +1,21 @@
 package project_1_servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet("/ReimbServlet")
+import project_1_POJO.Reimb;
+import project_1_services.ReimbService;
+
+@WebServlet("/ReimbServlet/*")
 public class ReimbServlet extends HttpServlet {
 
       
@@ -22,8 +29,15 @@ public class ReimbServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ObjectMapper om = new ObjectMapper();
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		int userid = (Integer) session.getAttribute("userid");
+		for(Reimb r:ReimbService.getTicketsByUserid(userid)) {
+			System.out.println(r);
+		}
+		out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
 	}
 
 

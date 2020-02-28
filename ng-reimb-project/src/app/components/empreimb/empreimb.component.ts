@@ -3,11 +3,11 @@ import { ReimbService } from 'src/app/services/reimb.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-reimb',
-  templateUrl: './reimb.component.html',
-  styleUrls: ['./reimb.component.css']
+  selector: 'app-empreimb',
+  templateUrl: './empreimb.component.html',
+  styleUrls: ['./empreimb.component.css']
 })
-export class ReimbComponent implements OnInit {
+export class EmpReimbComponent implements OnInit {
   @ViewChild('f2')
   reimbForm : NgForm;
   type:string;

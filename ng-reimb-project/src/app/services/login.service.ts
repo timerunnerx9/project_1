@@ -56,7 +56,7 @@ loginVerification(username:string, password:string): void {
     this.user.role_id=val.role_id},
     error => console.log(error)
   )
-  
+
     this.userChanged.next(this.user);
 
   }
