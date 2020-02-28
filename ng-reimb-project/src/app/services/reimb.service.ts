@@ -1,24 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
 
 
-export interface Reimb{
-    reimb_id: string,
-    reimb_amount: string
-    // reimb_submitted:string,
-    // reimb_resolved:string,
-    // reimb_description:string,
-    // reimb_receipt:string,
-    // reimb_author:string,
-    // reimb_resolver:string,
-    // reimb_status_id:string,
-    // reimb_type_id:string
+ interface Reimb{
+    reimb_id: number,
+    reimb_amount: number;
+    reimb_submitted:string,
+    reimb_resolved:string,
+    reimb_description:string,
+    reimb_receipt:string,
+    reimb_author:number;
+    reimb_resolver:number;
+    reimb_status_id:number;
+    reimb_type_id:number;
   
   
 }
+
+ const reimb ={
+  reimb_id: 0,
+  reimb_amount: 0,
+  reimb_submitted:"",
+  reimb_resolved:"",
+  reimb_description:"",
+  reimb_receipt:"",
+  reimb_author:"",
+  reimb_resolver:"",
+  reimb_status_id:0,
+  reimb_type_id:0
+
+}
+
+
 
 
 
@@ -33,6 +49,13 @@ export class ReimbService {
 
 
 
+
+
+  getReimbByUserid(){
+    const url = "http://localhost:8081/project_1/ReimbServlet"
+    let params = new HttpParams()
+      .set("actionType","101")
+  }
 
 
   onCreateReimb(): Promise<string>{

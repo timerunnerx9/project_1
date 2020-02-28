@@ -36,9 +36,8 @@ public class ReimbDAO {
 //						reimb_status_id,reimb_type_id));
 				ticketList.add(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
 						reimb_status_id,reimb_type_id));
-				return ticketList;
 						
-			}
+			}return ticketList;
 			
 			
 		} catch (SQLException e) {

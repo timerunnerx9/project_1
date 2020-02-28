@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import project_1_POJO.Reimb;
 import project_1_services.ReimbService;
 
 @WebServlet("/ReimbServlet/*")
@@ -33,6 +34,9 @@ public class ReimbServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		int userid = (Integer) session.getAttribute("userid");
+		for(Reimb r:ReimbService.getTicketsByUserid(userid)) {
+			System.out.println(r);
+		}
 		out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
 	}
 
