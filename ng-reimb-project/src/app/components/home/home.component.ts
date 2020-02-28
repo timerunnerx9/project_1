@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
    
     this.user = this.loginService.getUser();
-  
+    console.log(this.user);
     
   }
 
