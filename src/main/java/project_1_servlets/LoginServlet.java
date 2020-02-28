@@ -80,6 +80,7 @@ public class LoginServlet extends HttpServlet{
 		if(LoginInfoDAO.verifyuser(username, password)){
 			HttpSession session = request.getSession();
 			session.setAttribute("userid", UserDAO.getUserByUsername(username).getUser_id());
+//			System.out.println(UserService.getUserJson(username));
 			out.print(UserService.getUserJson(username));
 		}
 		else {

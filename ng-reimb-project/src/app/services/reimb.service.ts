@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 
 
 
@@ -34,6 +34,7 @@ import { Observable } from 'rxjs';
 
 }
 
+let reimbMap = new Map();
 
 
 
@@ -55,6 +56,10 @@ export class ReimbService {
     const url = "http://localhost:8081/project_1/ReimbServlet"
     let params = new HttpParams()
       .set("actionType","101")
+      .set("observe", "response")
+
+    this.httpClient.get<Reimb>(url,{params, observe:"response"}
+      ).subscribe()
   }
 
 

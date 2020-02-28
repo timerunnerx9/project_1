@@ -13,7 +13,7 @@ import {LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
 import {FormsModule} from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
-import { FinreimbComponent } from './finreimb/finreimb.component';
+import { FinreimbComponent } from './components/finreimb/finreimb.component';
 
 
 
