@@ -22,7 +22,7 @@ public class ReimbDAO {
 	}
 	
 	
-	
+// method used to retrieve all reimbursements from specific employee.	
 	public static Reimb viewEmpPastTickets(int reimb_id) {
 		try(Connection connection =  ConnectionUtil.getConnection()){
 			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
@@ -34,7 +34,8 @@ public class ReimbDAO {
 		return null;
 		
 	}
-	
+
+// method used to retrieve all reimbursements from the table.	
 	public static Reimb viewPastTickets(int reimb_id) {
 		try(Connection connection =  ConnectionUtil.getConnection()){
 			String sql =  "SELECT * FROM ers_reimbursement";
@@ -46,7 +47,7 @@ public class ReimbDAO {
 		return null;
 		
 	}
-	
+	 	
 	public static Reimb extractRecord(ResultSet result) throws SQLException{
 		int reimb_id = result.getInt("reimb_id");
 		Double reimb_amount = result.getDouble("reimb_amount");
@@ -63,8 +64,7 @@ public class ReimbDAO {
 	}
 	
 	
-	
-	
+	// Query used to create a record based on filling in the reimbursement model data. 
 	
 	public static Reimb createRecord(int userid, Reimb r) {
 		try(Connection connection = ConnectionUtil.getConnection()){

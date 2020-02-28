@@ -10,7 +10,7 @@ public class UserService {
 //		System.out.println(userDAO.getUser(1));
 //	}
 
-	
+// converts java username to json string.	
 	
 	public static String getUserJson(String username) {
 		User u = UserDAO.getUserByUsername(username);
