@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReimbComponent } from './reimb.component';
+import { FinreimbComponent } from './finreimb.component';
 
-describe('ReimbComponent', () => {
-  let component: ReimbComponent;
-  let fixture: ComponentFixture<ReimbComponent>;
+describe('FinreimbComponent', () => {
+  let component: FinreimbComponent;
+  let fixture: ComponentFixture<FinreimbComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReimbComponent ]
+      declarations: [ FinreimbComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReimbComponent);
+    fixture = TestBed.createComponent(FinreimbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

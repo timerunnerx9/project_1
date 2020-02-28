@@ -56,48 +56,20 @@
     </table>
     </div>
 
-
-<!-- 
-    <div class="collapse" id ="dropdownopt">
-    <p>
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Link with href
-      </a>
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Button with data-target
-      </button>
-    </p>
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
-    </div> -->
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
     <p>
       <button class="btn btn-primary" type="button" data-toggle="collapse" href="#reimbForm" aria-expanded="false" aria-controls="collapseExample">
         Add Reimbursement Request
       </button>
     </p>
     <div class="collapse" id ="reimbForm">
-    <form (ngSubmit)='onSubmit' #f2='ngForm' id=reimbForm>
+    <!-- <form (ngSubmit)='onSubmit' #f2='ngForm' id=reimbForm> -->
+        <form>
       <div class="form-row"  >
         <div class="form-group col-md-2">
           <label for="reimbType">Types</label>
-          <select id="reimbType" (change)="dropDownHandler($event)" class="form-control">
+          <!-- <select id="reimbType" (change)="dropDownHandler($event)" class="form-control"> -->
+          <select id="reimbType"  class="form-control">
+
             <option  selected >Choose...</option>
             <option value = "Lodging">Lodging</option>
             <option value = "Travel">Travel</option>

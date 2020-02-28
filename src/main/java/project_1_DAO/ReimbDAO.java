@@ -1,19 +1,62 @@
 package project_1_DAO;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
 import project_1.utils.ConnectionUtil;
 import project_1_POJO.Reimb;
 
 
 public class ReimbDAO {
 	
+<<<<<<< HEAD
+
+	public static ArrayList<Reimb> viewPastTicketsByUserid(int user_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			ArrayList<Reimb> ticketList = new ArrayList<Reimb>();
+			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_author = ?";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				int reimb_id = result.getInt("reimb_id");
+				Double reimb_amount = result.getDouble("reimb_amount");
+				Timestamp reimb_submitted = result.getTimestamp("reimb_submitted");
+				Timestamp reimb_resolved = result.getTimestamp("reimb_resolved");
+				String description = result.getString("reimb_description");
+				Boolean reimb_receipt = result.getBoolean("reimb_receipt");
+				int reimb_author = result.getInt("reimb_author");
+				int reimb_resolver = result.getInt("reimb_resolver");
+				int reimb_status_id = result.getInt("reimb_status_id");
+				int reimb_type_id = result.getInt("reimb_type_id");
+//				System.out.println(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
+//						reimb_status_id,reimb_type_id));
+				ticketList.add(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
+						reimb_status_id,reimb_type_id));
+						
+			}return ticketList;
+			
+			
+=======
 	public static Reimb finManUpdateRecord(int reimb_id) {
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE ";
+>>>>>>> 88d9125f6dc40971155460f9751f58a40e7f4661
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	
+	
+	public static Reimb finManUpdateRecord(int reimb_id) {
+		try(Connection connection = ConnectionUtil.getConnection()){
+			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE reimb_id = ?";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,17 +78,7 @@ public class ReimbDAO {
 		
 	}
 	
-	public static Reimb viewPastTickets(int reimb_id) {
-		try(Connection connection =  ConnectionUtil.getConnection()){
-			String sql =  "SELECT * FROM ers_reimbursement";
-			PreparedStatement statement = connection.prepareStatement(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-		
-	}
+
 	
 	public static Reimb extractRecord(ResultSet result) throws SQLException{
 		int reimb_id = result.getInt("reimb_id");
