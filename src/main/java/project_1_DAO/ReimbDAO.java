@@ -48,33 +48,27 @@ public class ReimbDAO {
 
 	
 	
-<<<<<<< HEAD
+
 // method used to retrieve all reimbursements from specific employee.	
-	public static Reimb viewEmpPastTickets(int reimb_id) {
-		try(Connection connection =  ConnectionUtil.getConnection()){
-			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
-			PreparedStatement statement = connection.prepareStatement(sql);
-=======
-	public static Reimb finManUpdateRecord(int reimb_id) {
-		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE reimb_id = ?";
->>>>>>> 7d6231eeb743b8d14999357b2ff3a7e6bf257dc9
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-<<<<<<< HEAD
+//	public static Reimb viewEmpPastTickets(int reimb_id) {
+//		try(Connection connection =  ConnectionUtil.getConnection()){
+//			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
+//			PreparedStatement statement = connection.prepareStatement(sql);
+//
+//	public static Reimb finManUpdateRecord(int reimb_id) {
+//		try(Connection connection = ConnectionUtil.getConnection()){
+//			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE reimb_id = ?";
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+
 
 // method used to retrieve all reimbursements from the table.	
 	public static Reimb viewPastTickets(int reimb_id) {
-=======
-	
-	
-	
-	public static Reimb viewEmpPastTickets(int reimb_id) {
->>>>>>> 7d6231eeb743b8d14999357b2ff3a7e6bf257dc9
 		try(Connection connection =  ConnectionUtil.getConnection()){
 			String sql =  "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
@@ -85,13 +79,7 @@ public class ReimbDAO {
 		return null;
 		
 	}
-<<<<<<< HEAD
-	 	
-=======
-	
 
-	
->>>>>>> 7d6231eeb743b8d14999357b2ff3a7e6bf257dc9
 	public static Reimb extractRecord(ResultSet result) throws SQLException{
 		int reimb_id = result.getInt("reimb_id");
 		Double reimb_amount = result.getDouble("reimb_amount");

@@ -36,7 +36,7 @@ import { LoginService } from './login.service';
 
 }
 
-let reimbMap = new Map();
+
 
 
 
@@ -58,18 +58,12 @@ export class ReimbService {
 
   getReimbByUserid(){
 
-    // const userid = this.loginService.getUser().user_id;
     const url = "http://localhost:8081/project_1/ReimbServlet";
-    // let params = new HttpParams()
-    // .set("userid",userid.toString())
-      // .set("actionType","101")
-      // .set("observe", "response")
-
-  //   this.httpClient.get<Reimb>(url,{params, observe:"response"}
-  //     ).subscribe((val)=>console.log(val));
-  // }
-
-  this.httpClient.get(url,{withCredentials: true}).subscribe((val)=>console.log(JSON.stringify(val)));
+    let params = new HttpParams()
+    .set("actiontype","101")
+    
+    this.httpClient.get(url,{params,withCredentials:true})
+    .subscribe((val)=>console.log(JSON.stringify(val)));
 }
 
   onCreateReimb(): Promise<string>{

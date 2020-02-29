@@ -17,8 +17,10 @@ import project_1_services.ReimbService;
 @WebServlet("/ReimbServlet/*")
 public class ReimbServlet extends HttpServlet {
 
-
-	
+//public static void main(String[] args) {
+//	System.out.println(ReimbService.getTicketsByUserid(1));
+//}
+//	
 	
 	
 	
@@ -34,13 +36,19 @@ public class ReimbServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		ObjectMapper om = new ObjectMapper();
-		response.setContentType("application/json");
-
+		
 		Cookie c[] = request.getCookies();
-		int userid = Integer.parseInt(c[1].getValue());
-		out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
+		String actiontype = request.getParameter("actiontype");
+		ObjectMapper om = new ObjectMapper();
+		int userid = Integer.parseInt(c[0].getValue());
+		System.out.println(userid);
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		switch (actiontype) {
+		case "101" : out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
+		break;
+		}
+		
 		
 	}
 
