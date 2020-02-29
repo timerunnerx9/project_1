@@ -7,7 +7,9 @@ import java.sql.SQLException;
 
 import project_1.utils.ConnectionUtil;
 import project_1_POJO.User;
-
+/*
+ * DAO used to get information from specific user called. 
+ * */
 public class UserDAO {
 
 	public static User getUserByID(int userid) {
