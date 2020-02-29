@@ -13,7 +13,7 @@ import project_1_POJO.Reimb;
 
 public class ReimbDAO {
 	
-<<<<<<< HEAD
+
 
 	public static ArrayList<Reimb> viewPastTicketsByUserid(int user_id) {
 		try(Connection connection =  ConnectionUtil.getConnection()){
@@ -39,19 +39,13 @@ public class ReimbDAO {
 						reimb_status_id,reimb_type_id));
 						
 			}return ticketList;
-			
-			
-=======
-	public static Reimb finManUpdateRecord(int reimb_id) {
-		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "UPDATE ers_reimbursement SET reimb_status_id = 'Pending' WHERE ";
->>>>>>> 88d9125f6dc40971155460f9751f58a40e7f4661
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
-		return null;
-		
+		catch(SQLException e) {
+			e.printStackTrace();
+		}return null;
 	}
+
+
 	
 	
 <<<<<<< HEAD

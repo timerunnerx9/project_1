@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
+import { User } from './user.service';
+import { LoginService } from './login.service';
 
 
 
@@ -46,22 +48,29 @@ let reimbMap = new Map();
 })
 export class ReimbService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,
+    private loginService :LoginService) { }
+
 
 
 
 
 
   getReimbByUserid(){
-    const url = "http://localhost:8081/project_1/ReimbServlet"
-    let params = new HttpParams()
-      .set("actionType","101")
-      .set("observe", "response")
 
-    this.httpClient.get<Reimb>(url,{params, observe:"response"}
-      ).subscribe()
-  }
+    // const userid = this.loginService.getUser().user_id;
+    const url = "http://localhost:8081/project_1/ReimbServlet";
+    // let params = new HttpParams()
+    // .set("userid",userid.toString())
+      // .set("actionType","101")
+      // .set("observe", "response")
 
+  //   this.httpClient.get<Reimb>(url,{params, observe:"response"}
+  //     ).subscribe((val)=>console.log(val));
+  // }
+
+  this.httpClient.get(url,{withCredentials: true}).subscribe((val)=>console.log(JSON.stringify(val)));
+}
 
   onCreateReimb(): Promise<string>{
     const url = "http://localhost:8081/project_1/ReimbServlet";

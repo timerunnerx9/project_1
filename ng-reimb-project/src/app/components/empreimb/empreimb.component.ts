@@ -16,7 +16,7 @@ export class EmpReimbComponent implements OnInit {
   constructor(private reimbService:ReimbService) { }
 
   ngOnInit(): void {
-   
+    this.reimbService.getReimbByUserid();
   }
 
 

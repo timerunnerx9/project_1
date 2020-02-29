@@ -44,7 +44,7 @@ loginVerification(username:string, password:string): void {
         .set("password",password)
 
 
-  this.httpClient.post<User>(url,params)
+  this.httpClient.post<User>(url,params,{withCredentials: true})
     .subscribe((val)=>
   {
     this.user.user_id =val.user_id,

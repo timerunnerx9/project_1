@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,32 +37,24 @@ public class LoginServlet extends HttpServlet{
 	
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		
 //		resp.addHeader("Access-Control-Allow-Headers", "authorization");
-		resp.addHeader("Access-Control-Allow-Headers", "*");
-		resp.addHeader("Access-Control-Allow-Methods", "GET POST PUT DELETE");
-//		resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		response.addHeader("Access-Control-Allow-Headers", "*");
+		response.addHeader("Access-Control-Allow-Methods", "GET POST PUT DELETE");
+		response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		response.addHeader("Access-Control-Allow-Credentials", "true");
 		
-		resp.addHeader("Access-Control-Allow-Origin", "*");
-		
-		super.service(req, resp);
+		super.service(request, response);
 		
 	}
 	
-	
-	
-
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
-		
 //		ObjectMapper om = new ObjectMapper();
 //		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
 		
-		PrintWriter out = response.getWriter();
-
 //		LoginInfo loginInfo = new Gson().fromJson(request.getReader(), LoginInfo.class);
 		
 //		String username = loginInfo.getUsername();
@@ -74,13 +67,19 @@ public class LoginServlet extends HttpServlet{
 //	
 //		System.out.println(request.getReader().readLine());
 //		String querystring = request.getQueryString();
+		
+	
+
+			
 		String username = request.getParameter("name");
 		String password = request.getParameter("password");
 
 		if(LoginInfoDAO.verifyuser(username, password)){
-			HttpSession session = request.getSession();
-			session.setAttribute("userid", UserDAO.getUserByUsername(username).getUser_id());
-//			System.out.println(UserService.getUserJson(username));
+			Cookie c1 = new Cookie("userid",String.valueOf(UserDAO.getUserByUsername(username).getUser_id()));
+			c1.setPath("/");
+			c1.setDomain("localhost");
+			response.addCookie(c1);
+			PrintWriter out = response.getWriter();
 			out.print(UserService.getUserJson(username));
 		}
 		else {
