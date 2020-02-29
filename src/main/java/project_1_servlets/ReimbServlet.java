@@ -5,39 +5,43 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import project_1_POJO.Reimb;
 import project_1_services.ReimbService;
 
 @WebServlet("/ReimbServlet/*")
 public class ReimbServlet extends HttpServlet {
 
-      
+
+	
+	
+	
+	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.addHeader("Access-Control-Allow-Headers", "authorization");
-		resp.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-		resp.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-		super.service(req, resp);
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.addHeader("Access-Control-Allow-Headers", "authorization");
+		response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+		response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		response.addHeader("Access-Control-Allow-Credentials", "true");
+
+		super.service(request, response);
 		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
 		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();
-		int userid = (Integer) session.getAttribute("userid");
-		for(Reimb r:ReimbService.getTicketsByUserid(userid)) {
-			System.out.println(r);
-		}
+
+		Cookie c[] = request.getCookies();
+		int userid = Integer.parseInt(c[1].getValue());
 		out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
+		
 	}
 
 
