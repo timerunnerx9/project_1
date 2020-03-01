@@ -41,7 +41,6 @@ public class ReimbServlet extends HttpServlet {
 		String actiontype = request.getParameter("actiontype");
 		ObjectMapper om = new ObjectMapper();
 		int userid = Integer.parseInt(c[0].getValue());
-		System.out.println(userid);
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		switch (actiontype) {

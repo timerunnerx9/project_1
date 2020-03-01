@@ -7,7 +7,7 @@ public class Reimb {
 	private Double reimb_amount;
 	private Timestamp reimb_submitted;
 	private Timestamp reimb_resolved;
-	private String description;
+	private String reimb_description;
 	private Boolean reimb_receipt;
 	private int reimb_author;
 	private int reimb_resolver;
@@ -17,13 +17,23 @@ public class Reimb {
 	
 	
 	
+	public Reimb(int reimb_type_id, Double reimb_amount, String reimb_description, Boolean reimb_receipt)
+		{
+		this.reimb_type_id = reimb_type_id;
+		this.reimb_amount = reimb_amount;
+		this.reimb_description = reimb_description;
+		this.reimb_receipt = this.reimb_receipt;
+	}
+	
+	
+	
 	//DAO will use the constructor below to create new object to send back to servlet
 	public Reimb(
 			int reimb_id,
 			Double reimb_amount,
 			Timestamp reimb_submitted,
 			Timestamp reimb_resolved,
-			String description,
+			String reimb_description,
 			Boolean reimb_receipt,
 			int reimb_author,
 			int reimb_resolver,
@@ -33,7 +43,7 @@ public class Reimb {
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
 		this.reimb_resolved = reimb_resolved;
-		this.description = description;
+		this.reimb_description = reimb_description;
 		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_resolver = reimb_resolver;
@@ -46,9 +56,10 @@ public class Reimb {
 	
 	//we will call the below constructor with our input as parameters to create a transit object
 	public Reimb(
+			
 			Double reimb_amount,
 			Timestamp reimb_submitted,
-			String description,
+			String reimb_description,
 			Boolean reimb_receipt,
 			int reimb_author,
 			int reimb_status_id,
@@ -57,7 +68,7 @@ public class Reimb {
 
 		this.reimb_amount = reimb_amount;
 		this.reimb_submitted = reimb_submitted;
-		this.description = description;
+		this.reimb_description = reimb_description;
 		this.reimb_receipt = reimb_receipt;
 		this.reimb_author = reimb_author;
 		this.reimb_status_id = reimb_status_id;
@@ -100,10 +111,10 @@ public class Reimb {
 	}
 	
 	public String getDescription() {
-		return description;
+		return reimb_description;
 	}
 	public void setDescription(String description) {
-		this.description = description;
+		this.reimb_description = description;
 	}
 	
 	public Boolean getReimb_receipt() {
