@@ -30,7 +30,6 @@ public class ReimbService {
 		public static Reimb createReimb(int user_id, int reimb_type_id, Double reimb_amount,
 				String reimb_description, Boolean reimb_receipt) {
 		Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
-		
 		 Reimb tempReimb = new Reimb(reimb_amount,currentTimestamp.from(Instant.now()), reimb_description, reimb_receipt,
 				 user_id,1,reimb_type_id);
 		 Reimb newReimb = ReimbDAO.createRecord(user_id, tempReimb);

@@ -147,7 +147,6 @@ public class ReimbDAO {
 			ResultSet result = statement.executeQuery();
 			
 			if(result.next()) {
-				System.out.println("works");
 				return extractRecord(result);
 			}
 		}

@@ -78,7 +78,6 @@ public class ReimbServlet extends HttpServlet {
 			Boolean reimb_receipt = Boolean.parseBoolean(request.getParameter("reimb_receipt"));
 			ReimbService.createReimb(userid, reimb_type_id, reimb_amount, reimb_description, reimb_receipt);
 			response.setStatus(200);
-			out.print("create record works");
 			break;
 			
 		}

@@ -59,7 +59,8 @@ onSubmit(){
     {
       this.reimbrecords = reimbrecords;
     });
-  this.router.navigate(['/empreimb'])
+    console.log(this.reimbrecords);
+ 
 }
 
 
