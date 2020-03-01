@@ -8,9 +8,6 @@ import { User } from './user.service';
   providedIn: 'root'
 })
 export class LoginService {
-
-
-
   userChanged = new Subject<User>();
 
   private user:User ={

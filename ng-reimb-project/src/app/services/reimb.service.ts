@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
+import { Observable, observable, ReplaySubject } from 'rxjs';
 import { User } from './user.service';
 import { LoginService } from './login.service';
 
 
 
-
- interface Reimb{
+ export interface Reimb{
     reimb_id: number,
     reimb_amount: number;
     reimb_submitted:string,
@@ -19,28 +18,7 @@ import { LoginService } from './login.service';
     reimb_status_id:number;
     reimb_type_id:number;
   
-  
 }
-
- const reimb ={
-  reimb_id: 0,
-  reimb_amount: 0,
-  reimb_submitted:"",
-  reimb_resolved:"",
-  reimb_description:"",
-  reimb_receipt:"",
-  reimb_author:"",
-  reimb_resolver:"",
-  reimb_status_id:0,
-  reimb_type_id:0
-
-}
-
-let reimbMap = new Map();
-
-
-
-
 
 
 @Injectable({
@@ -50,46 +28,41 @@ export class ReimbService {
 
   constructor(private httpClient:HttpClient,
     private loginService :LoginService) { }
+  
 
-
-
+  reimbRecordChange: ReplaySubject<Reimb[]> = new ReplaySubject<Reimb[]>(); 
+  reimbRecords : Reimb[] =[];
+  
+  public reimbRecord$ = this.reimbRecordChange.asObservable();
 
 
 
   getReimbByUserid(){
 
-    // const userid = this.loginService.getUser().user_id;
     const url = "http://localhost:8081/project_1/ReimbServlet";
-    // let params = new HttpParams()
-    // .set("userid",userid.toString())
-      // .set("actionType","101")
-      // .set("observe", "response")
-
-  //   this.httpClient.get<Reimb>(url,{params, observe:"response"}
-  //     ).subscribe((val)=>console.log(val));
-  // }
-
-  this.httpClient.get(url,{withCredentials: true}).subscribe((val)=>console.log(JSON.stringify(val)));
+    let params = new HttpParams()
+    .set("actiontype","101")
+    
+    this.httpClient.get<Reimb[]>(url,{params,withCredentials:true})
+    .subscribe(data =>{
+      this.reimbRecords = data;
+      this.reimbRecordChange.next(this.reimbRecords);
+    },
+    (error: HttpErrorResponse) =>{
+      console.log(error.name + ' '+ error.message);
+    }
+    
+    );
 }
+
+
+
 
   onCreateReimb(): Promise<string>{
     const url = "http://localhost:8081/project_1/ReimbServlet";
     return this.httpClient.post(url,'hi',{responseType:'text'}).toPromise();
 
   }
-
-
-
-  
-
-
-
-
-
-
-
-
-
 
 
 
