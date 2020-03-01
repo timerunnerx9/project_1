@@ -21,3 +21,7 @@ table{
     left: 2em;
     margin-top: 5em;
 }
+#back{
+    background-color: gray;
+    width: 80px;
+}

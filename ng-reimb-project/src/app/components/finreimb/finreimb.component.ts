@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReimbService, Reimb } from 'src/app/services/reimb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-finreimb',
@@ -12,7 +13,8 @@ export class FinreimbComponent implements OnInit {
   reimbrecords: Reimb[]= [];
 
   
-  constructor(private reimbService:ReimbService) { }
+  constructor(private reimbService:ReimbService,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.reimbService.getAllReimb();
@@ -36,4 +38,9 @@ toggle(id) {
     this.reimbService.rejectReimb(reimb_id);
   }
 
+
+
+  onBack(){
+    this.router.navigate(['/home'])
+  }
 }

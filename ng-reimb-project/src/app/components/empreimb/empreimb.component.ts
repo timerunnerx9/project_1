@@ -58,9 +58,14 @@ onSubmit(){
   this.reimbService.reimbRecord$.subscribe(reimbrecords =>
     {
       this.reimbrecords = reimbrecords;
+      this.reimbForm.reset();
     });
-    console.log(this.reimbrecords);
+
  
+}
+
+onBack(){
+  this.router.navigate(['/home'])
 }
 
 
