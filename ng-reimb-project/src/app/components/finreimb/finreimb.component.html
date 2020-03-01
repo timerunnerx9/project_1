@@ -17,39 +17,38 @@
         </tr>
       </thead>
       <tbody  *ngFor ="let reimb of reimbrecords; let i = index" >
-          <tr>
-          <th scope="row">{{reimb.reimb_id}}</th>
-          <td>{{reimb.reimb_type_id}}</td>
-          <td>{{reimb.reimb_amount}}</td>
-          <td>{{reimb.reimb_author}}</td>
-          <td>{{reimb.reimb_submitted}}</td>
-          <td>{{reimb.description}}</td>
-          <td>{{reimb.reimb_receipt}}</td>
+        <tr>
+        <th scope="row">{{reimb.reimb_id}}</th>
+        <td>{{reimb.reimb_type_id}}</td>
+        <td>{{reimb.reimb_amount}}</td>
+        <td>{{reimb.reimb_author}}</td>
+        <td>{{reimb.reimb_submitted}}</td>
+        <td>{{reimb.description}}</td>
+        <td>{{reimb.reimb_receipt}}</td>
 
-          <td data-toggle = "collapse" href = "#record-1"> 
-            {{reimb.reimb_status_id}}</td>
+        <td data-toggle = "collapse" (click)="toggle('record-'+i)"> 
+          {{reimb.reimb_status_id}}</td>
 
-          <td>{{reimb.reimb_resolver}}</td>
-          <td>{{reimb.reimb_resolved}}</td>
-        </tr>
-        <tr >
-        <p class = [attr.id] = "'record-'+i">
-          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Link with href
-          </a>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Button with data-target
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-          </div>
-        </div>
-         
-          </tr>
-      </tbody>
+        <td>{{reimb.reimb_resolver}}</td>
+        <td>{{reimb.reimb_resolved}}</td>
+      </tr>
+      <tr >
+      <p class ="collapse" [attr.id] = "'record-'+i">
+        <a class="btn btn-primary" data-toggle="collapse" href=" " role="button" aria-expanded="false" aria-controls="collapseExample">
+          Approve Request
+        </a>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Reject Request
+        </button>
+      </p >
     </table>
+
+
+
+
+
+
+
    
 
  

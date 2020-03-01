@@ -15,7 +15,7 @@ export class FinreimbComponent implements OnInit {
   constructor(private reimbService:ReimbService) { }
 
   ngOnInit(): void {
-    this.reimbService.getReimbByUserid();
+    this.reimbService.getAllReimb();
     this.reimbService.reimbRecord$.subscribe(reimbrecords =>
       {
         console.log(reimbrecords);
@@ -24,4 +24,18 @@ export class FinreimbComponent implements OnInit {
       });
   }
 
+toggle(id) {
+  var element = document.getElementById(id);
+  element.style.display = element.style.display === 'block' ? 'none' : 'block';
 }
+
+
+  // onApprove():void{
+  //   this.reimbService.
+  // }
+
+
+
+}
+
+

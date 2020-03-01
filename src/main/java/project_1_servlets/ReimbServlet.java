@@ -46,6 +46,7 @@ public class ReimbServlet extends HttpServlet {
 		switch (actiontype) {
 		case "101" : out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
 		break;
+		case "201": out.print(om.writeValueAsString(ReimbService.getAllTickets(userid)));
 		}
 		
 		
@@ -53,8 +54,31 @@ public class ReimbServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		response.getWriter().append("it works");
+		int reimb_id;
+		Cookie c[] = request.getCookies();
+		String actiontype = request.getParameter("actiontype");
+		ObjectMapper om = new ObjectMapper();
+		int userid = Integer.parseInt(c[0].getValue());
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		switch (actiontype) {
+		case "210" : 
+			reimb_id = Integer.parseInt(request.getParameter("reimb_id"));
+			ReimbService.updateReimb(userid, reimb_id, 2);
+			out.append("Reimbursement status updated!");
+		break;
+		case "220" : 
+			reimb_id = Integer.parseInt(request.getParameter("reimb_id"));
+			ReimbService.updateReimb(userid, reimb_id, 3);
+			out.append("Reimbursement status updated!");
+			break;
+		case "102":
+			
+			
+			
+		}
+		
+			
 	}
 
 }

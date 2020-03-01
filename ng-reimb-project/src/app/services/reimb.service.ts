@@ -58,11 +58,69 @@ export class ReimbService {
 
 
 
-  onCreateReimb(): Promise<string>{
-    const url = "http://localhost:8081/project_1/ReimbServlet";
-    return this.httpClient.post(url,'hi',{responseType:'text'}).toPromise();
 
+
+getAllReimb(){
+
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+  .set("actiontype","201")
+  
+  this.httpClient.get<Reimb[]>(url,{params,withCredentials:true})
+  .subscribe(data =>{
+    this.reimbRecords = data;
+    this.reimbRecordChange.next(this.reimbRecords);
+  },
+  (error: HttpErrorResponse) =>{
+    console.log(error.name + ' '+ error.message);
   }
+  
+  );
+}
+
+
+
+approveReimb(reimb_id:number){
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+    .set("reimb_id",reimb_id.toString())
+    .set("actiontype","210")
+    this.httpClient.post(url,params,{withCredentials: true})
+    .subscribe(()=>{
+      this.getAllReimb()
+    },
+    (error: HttpErrorResponse)=>{
+      console.log(error.name + ' '+ error.message);
+    }
+      
+    );
+}
+
+
+denyReimb(reimb_id:number){
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+    .set("reimb_id",reimb_id.toString())
+    .set("actiontype","220")
+    this.httpClient.post(url,params,{withCredentials: true})
+    .subscribe(()=>{
+      this.getAllReimb()
+    },
+    (error: HttpErrorResponse)=>{
+      console.log(error.name + ' '+ error.message);
+    }
+      
+    );
+}
+
+
+
+
+  // onCreateReimb():void {
+  //   const url = "http://localhost:8081/project_1/ReimbServlet";
+  //   return this.httpClient.post(url,'hi',{responseType:'text'}).toPromise();
+
+  // }
 
 
 

@@ -46,7 +46,7 @@ export class EmpReimbComponent implements OnInit {
       {
         console.log(reimbrecords);
         this.reimbrecords = reimbrecords;
-        console.log(this.reimbrecords);
+       
       });
     
   }

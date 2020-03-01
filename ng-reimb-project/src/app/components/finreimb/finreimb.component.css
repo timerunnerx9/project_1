@@ -4,3 +4,11 @@
     margin-top: 2em;
     right: 9vw;
 }
+
+.collapse{
+    position: relative;
+    left: 70vw;
+}
+button{
+    margin-left: 1em;
+}

@@ -21,6 +21,9 @@ public class ReimbService {
 			return ReimbDAO.viewPastTicketsByUserid(user_id);
 		}
 		
+		public static ArrayList<Reimb> getAllTickets(int user_id){
+			return ReimbDAO.viewPastTickets(user_id);
+		}
 		
 		
 		public static Reimb createReimb(int user_id, int reimb_type_id, Double reimb_amount,
@@ -32,4 +35,11 @@ public class ReimbService {
 		 Reimb newReimb = ReimbDAO.createRecord(user_id, tempReimb);
 		return newReimb;
 		}
+		
+		
+		public static Reimb updateReimb(int user_id, int reimb_id, int status_code) {
+			return ReimbDAO.updateRecord(user_id, reimb_id, status_code);
+		}
+		
+		
 }
