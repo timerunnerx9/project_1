@@ -80,10 +80,10 @@ getAllReimb(){
 
 
 
-approveReimb(reimb_id:number){
+approveReimb(reimb_id:string){
   const url = "http://localhost:8081/project_1/ReimbServlet";
   let params = new HttpParams()
-    .set("reimb_id",reimb_id.toString())
+    .set("reimb_id",reimb_id)
     .set("actiontype","210")
     this.httpClient.post(url,params,{withCredentials: true})
     .subscribe(()=>{
@@ -97,10 +97,10 @@ approveReimb(reimb_id:number){
 }
 
 
-denyReimb(reimb_id:number){
+rejectReimb(reimb_id:string){
   const url = "http://localhost:8081/project_1/ReimbServlet";
   let params = new HttpParams()
-    .set("reimb_id",reimb_id.toString())
+    .set("reimb_id",reimb_id)
     .set("actiontype","220")
     this.httpClient.post(url,params,{withCredentials: true})
     .subscribe(()=>{

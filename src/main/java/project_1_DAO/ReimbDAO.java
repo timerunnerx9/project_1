@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -13,7 +15,9 @@ import project_1_POJO.Reimb;
 
 
 public class ReimbDAO {
-	
+	static Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
+//	public static void main(String[] args) {
+//	}
 
 	// method used to retrieve all reimbursements from specific employee.	
 	public static ArrayList<Reimb> viewPastTicketsByUserid(int user_id) {
@@ -90,10 +94,10 @@ public class ReimbDAO {
 		Timestamp reimb_resolved = result.getTimestamp("reimb_resolved");
 		String description = result.getString("reimb_description");
 		Boolean reimb_receipt = result.getBoolean("reimb_receipt");
-		int reimb_author = result.getInt("reimb_receipt");
+		int reimb_author = result.getInt("reimb_author");
 		int reimb_resolver = result.getInt("reimb_resolver");
 		int reimb_status_id = result.getInt("reimb_status_id");
-		int reimb_type_id = result.getInt("reumb_type_id");
+		int reimb_type_id = result.getInt("reimb_type_id");
 		return new Reimb(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, description,
 							reimb_receipt, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id);
 	}
@@ -103,7 +107,7 @@ public class ReimbDAO {
 	public static Reimb createRecord(int user_id, Reimb tempReimb) {
 		try(Connection connection = ConnectionUtil.getConnection()){
 			String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted,  description,"
-					+ " reimb_receipt, reimb_author, reimb_status_id, reimb_reimb_type_id) "
+					+ " reimb_receipt, reimb_author, reimb_status_id, reimb_reimb_type_id) RETURNING*"
 					+ "VALUES (?,?,?,?,?,?,?) RETURNING*";//sql to insert record into the reimbursement table
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
@@ -133,18 +137,17 @@ public class ReimbDAO {
 	//manger reimb
 	public static Reimb updateRecord(int user_id, int reimb_id, int status_code) {
 		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "update ers_reimbursement set reimb_status_id = ?" + 
-					"reimb_resolved = ? , reimb_resolver = ? WHERE reimb_id = ?;";
-			Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
-
+			String sql = "update ers_reimbursement set reimb_status_id = ? ," + 
+					"reimb_resolved = ? , reimb_resolver = ? WHERE reimb_id = ? RETURNING*;";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, status_code);
-			statement.setTimestamp(2, currentTimestamp);
+			statement.setTimestamp(2, currentTimestamp.from(Instant.now()));
 			statement.setInt(3, user_id);
 			statement.setInt(4, reimb_id);
 			ResultSet result = statement.executeQuery();
 			
 			if(result.next()) {
+				System.out.println("works");
 				return extractRecord(result);
 			}
 		}

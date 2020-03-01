@@ -1,6 +1,7 @@
 package project_1_services;
 
 import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -30,7 +31,7 @@ public class ReimbService {
 				String reimb_description, Boolean reimb_receipt) {
 		Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
 		
-		 Reimb tempReimb = new Reimb(reimb_amount,currentTimestamp, reimb_description, reimb_receipt,
+		 Reimb tempReimb = new Reimb(reimb_amount,currentTimestamp.from(Instant.now()), reimb_description, reimb_receipt,
 				 user_id,1,reimb_type_id);
 		 Reimb newReimb = ReimbDAO.createRecord(user_id, tempReimb);
 		return newReimb;
