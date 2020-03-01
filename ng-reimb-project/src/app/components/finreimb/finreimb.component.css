@@ -10,5 +10,7 @@
     left: 70vw;
 }
 button{
+    width: 10em;
     margin-left: 1em;
+    position: relative;
 }

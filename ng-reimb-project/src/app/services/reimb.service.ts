@@ -116,19 +116,30 @@ rejectReimb(reimb_id:string){
 
 
 
-  // onCreateReimb():void {
-  //   const url = "http://localhost:8081/project_1/ReimbServlet";
-  //   return this.httpClient.post(url,'hi',{responseType:'text'}).toPromise();
+  onCreateReimb(
+    reimb_type_id:number,
+    reimb_amount:number,
+    reimb_description:string,
+    reimb_receipt: boolean):void {
+    const url = "http://localhost:8081/project_1/ReimbServlet";
+    let params = new HttpParams()
+      .set("reimb_type_id",String(reimb_type_id))
+      .set("reimb_amount", String(reimb_amount))
+      .set("reimb_description", reimb_description)
+      .set("reimb_receipt", String(reimb_receipt))
+      .set("actiontype","102")
 
-  // }
+    this.httpClient.post(url,params,{withCredentials: true})
+      .subscribe(()=>{
+        this.getReimbByUserid();
+      })
 
-
+  }
 
 
 
 
 
 }
-
 
 

@@ -106,8 +106,8 @@ public class ReimbDAO {
 	// Query used to create a record based on filling in the reimbursement model data. 
 	public static Reimb createRecord(int user_id, Reimb tempReimb) {
 		try(Connection connection = ConnectionUtil.getConnection()){
-			String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted,  description,"
-					+ " reimb_receipt, reimb_author, reimb_status_id, reimb_reimb_type_id) RETURNING*"
+			String sql = "INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted,  reimb_description,"
+					+ " reimb_receipt, reimb_author, reimb_status_id, reimb_type_id)"
 					+ "VALUES (?,?,?,?,?,?,?) RETURNING*";//sql to insert record into the reimbursement table
 			PreparedStatement statement = connection.prepareStatement(sql);
 			

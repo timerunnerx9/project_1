@@ -18,9 +18,7 @@ export class FinreimbComponent implements OnInit {
     this.reimbService.getAllReimb();
     this.reimbService.reimbRecord$.subscribe(reimbrecords =>
       {
-        console.log(reimbrecords);
         this.reimbrecords = reimbrecords;
-        console.log(this.reimbrecords);
       });
   }
 
@@ -39,5 +37,3 @@ toggle(id) {
   }
 
 }
-
-
