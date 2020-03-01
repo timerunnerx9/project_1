@@ -14,3 +14,8 @@ button{
     margin-left: 1em;
     position: relative;
 }
+
+#back{
+    background-color: gray;
+    width: 80px;
+}
