@@ -46,15 +46,44 @@ public class ReimbServlet extends HttpServlet {
 		switch (actiontype) {
 		case "101" : out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
 		break;
+		case "201": out.print(om.writeValueAsString(ReimbService.getAllTickets(userid)));
 		}
-		
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		response.getWriter().append("it works");
+		int reimb_id;
+		Cookie c[] = request.getCookies();
+		String actiontype = request.getParameter("actiontype");
+		ObjectMapper om = new ObjectMapper();
+		int userid = Integer.parseInt(c[0].getValue());
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		switch (actiontype) {
+		case "210" : 
+			reimb_id = Integer.parseInt(request.getParameter("reimb_id"));
+			ReimbService.updateReimb(userid, reimb_id, 2);
+			response.setStatus(200);
+		break;
+		case "220" : 
+			reimb_id = Integer.parseInt(request.getParameter("reimb_id"));
+			ReimbService.updateReimb(userid, reimb_id, 3);
+			response.setStatus(200);
+			break;
+		case "102":
+			int reimb_type_id = Integer.parseInt(request.getParameter("reimb_type_id"));
+			Double reimb_amount = Double.parseDouble(request.getParameter("reimb_amount"));
+			String reimb_description = request.getParameter("reimb_description");
+			Boolean reimb_receipt = Boolean.parseBoolean(request.getParameter("reimb_receipt"));
+			ReimbService.createReimb(userid, reimb_type_id, reimb_amount, reimb_description, reimb_receipt);
+			response.setStatus(200);
+			out.print("create record works");
+			break;
+			
+		}
+		
+			
 	}
 
 }

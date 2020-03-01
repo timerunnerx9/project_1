@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input, EventEmitter } from '@angular/core
 import {LoginService} from 'src/app/services/login.service'
 import { NgForm } from '@angular/forms';
 import {Router, CanActivate } from '@angular/router'
-import { HttpParams } from '@angular/common/http';
+
 
 
 @Component({

@@ -22,7 +22,7 @@ public class Reimb {
 		this.reimb_type_id = reimb_type_id;
 		this.reimb_amount = reimb_amount;
 		this.reimb_description = reimb_description;
-		this.reimb_receipt = this.reimb_receipt;
+		this.reimb_receipt = reimb_receipt;
 	}
 	
 	

@@ -58,9 +58,81 @@ export class ReimbService {
 
 
 
-  onCreateReimb(): Promise<string>{
+
+
+getAllReimb(){
+
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+  .set("actiontype","201")
+  
+  this.httpClient.get<Reimb[]>(url,{params,withCredentials:true})
+  .subscribe(data =>{
+    this.reimbRecords = data;
+    this.reimbRecordChange.next(this.reimbRecords);
+  },
+  (error: HttpErrorResponse) =>{
+    console.log(error.name + ' '+ error.message);
+  }
+  
+  );
+}
+
+
+
+approveReimb(reimb_id:string){
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+    .set("reimb_id",reimb_id)
+    .set("actiontype","210")
+    this.httpClient.post(url,params,{withCredentials: true})
+    .subscribe(()=>{
+      this.getAllReimb()
+    },
+    (error: HttpErrorResponse)=>{
+      console.log(error.name + ' '+ error.message);
+    }
+      
+    );
+}
+
+
+rejectReimb(reimb_id:string){
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+    .set("reimb_id",reimb_id)
+    .set("actiontype","220")
+    this.httpClient.post(url,params,{withCredentials: true})
+    .subscribe(()=>{
+      this.getAllReimb()
+    },
+    (error: HttpErrorResponse)=>{
+      console.log(error.name + ' '+ error.message);
+    }
+      
+    );
+}
+
+
+
+
+  onCreateReimb(
+    reimb_type_id:number,
+    reimb_amount:number,
+    reimb_description:string,
+    reimb_receipt: boolean):void {
     const url = "http://localhost:8081/project_1/ReimbServlet";
-    return this.httpClient.post(url,'hi',{responseType:'text'}).toPromise();
+    let params = new HttpParams()
+      .set("reimb_type_id",String(reimb_type_id))
+      .set("reimb_amount", String(reimb_amount))
+      .set("reimb_description", reimb_description)
+      .set("reimb_receipt", String(reimb_receipt))
+      .set("actiontype","102")
+
+    this.httpClient.post(url,params,{withCredentials: true})
+      .subscribe(()=>{
+        this.getReimbByUserid();
+      })
 
   }
 
@@ -68,9 +140,6 @@ export class ReimbService {
 
 
 
-
-
 }
-
 
 
