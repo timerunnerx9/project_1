@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LoginService } from 'src/app/services/login.service'
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+display:boolean;
+  constructor(public loginService : LoginService) { }
 
+  role:string;
   ngOnInit(): void {
+    this.role = this.loginService.localStorage.getItem("role");
+
   }
 
 }

@@ -32,7 +32,9 @@ constructor(
 
 
   ngOnInit(): void {
-    
+    if(this.loginService.localStorage.getItem('user')){
+      this.router.navigate(['/home'])
+    }
   }
 
 

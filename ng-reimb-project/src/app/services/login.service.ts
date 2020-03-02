@@ -12,8 +12,9 @@ export class LoginService {
   constructor(private httpClient: HttpClient) { 
   }
 
+  public localStorage = localStorage;
 
-
+  
   userChanged = new Subject<User>();
 
   private user:User ={
@@ -25,9 +26,6 @@ export class LoginService {
     email:'',
     role_id:''
   }
-
-  
-
   
 
 
@@ -59,7 +57,8 @@ loginVerification(username:string, password:string): void {
   )
 
     this.userChanged.next(this.user);
-
+    this.localStorage.setItem('user',this.user.user_id);
+    this.localStorage.setItem("role",this.user.role_id);
   }
 
 
