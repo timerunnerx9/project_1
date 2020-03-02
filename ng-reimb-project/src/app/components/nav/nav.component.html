@@ -16,7 +16,7 @@
           <a class="nav-link"   [routerLink]="['/fin2reimb']" routerLinkActive="router-link-active">FinAllReimb</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  [routerLink]="['/login']" routerLinkActive="router-link-active">Log out</a>
+          <a class="nav-link"  (click)="onLogout()" routerLinkActive="router-link-active">Log out</a>
         </li>
         
       </ul>

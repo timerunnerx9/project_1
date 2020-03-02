@@ -12,11 +12,7 @@ import {Router, CanActivate } from '@angular/router'
 })
 
 
-// class routerGuard implements CanActivate{
-//   canActivate(){
-//     return false;
-//   }
-// }
+
 
 export class LoginComponent implements OnInit {
  
@@ -42,9 +38,14 @@ constructor(
   onSubmit(){
     this.loginService.loginVerification(this.loginForm.value.username, 
       this.loginForm.value.userpassword);
-    this.router.navigate(['/home'])
-    
+    this.loginService.userChanged$.subscribe(
+      (val)=>{console.log(val);
+      this.router.navigate(['/home'])}
+    )
+  
   }
+
+
 
 }
 

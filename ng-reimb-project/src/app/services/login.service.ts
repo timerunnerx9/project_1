@@ -16,6 +16,7 @@ export class LoginService {
 
   
   userChanged = new Subject<User>();
+  public userChanged$ = this.userChanged.asObservable();
 
   private user:User ={
     user_id: '',
@@ -33,6 +34,9 @@ getUser(){
   return this.user;
 }
 
+deleteUser(){
+  this.user.user_id='';
+}
 
 
 loginVerification(username:string, password:string): void {
@@ -54,12 +58,13 @@ loginVerification(username:string, password:string): void {
     this.user.email=val.email,
     this.user.role_id=val.role_id},
     error => console.log(error)
-  )
-
-    this.userChanged.next(this.user);
+    )
     this.localStorage.setItem('user',this.user.user_id);
     this.localStorage.setItem("role",this.user.role_id);
+    this.userChanged.next(this.user);
+
   }
+    
 
 
 }
