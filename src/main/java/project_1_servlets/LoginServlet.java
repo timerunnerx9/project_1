@@ -52,6 +52,7 @@ public class LoginServlet extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
 //		ObjectMapper om = new ObjectMapper();
 //		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
 		
@@ -79,10 +80,11 @@ public class LoginServlet extends HttpServlet{
 			c1.setPath("/");
 			c1.setDomain("localhost");
 			response.addCookie(c1);
-			PrintWriter out = response.getWriter();
+			
 			out.print(UserService.getUserJson(username));
 		}
 		else {
+			out.print("Account Verification failed");
 			response.setStatus(404);
 		}
 }

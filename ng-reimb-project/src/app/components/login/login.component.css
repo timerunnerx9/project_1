@@ -28,6 +28,16 @@ input.ng-invalid.ng-touched{
     align-items: center;
   
 }
+#errormessage{
+    width: 20em;
+    position: relative;
+    margin-top: 10%;
+    right: 14%;
+    color: red;
+
+
+    align-items: center;
+}
 
 
 

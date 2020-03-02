@@ -27,6 +27,7 @@ constructor(
 
   private user;
 
+  isError:boolean = false; 
 
   ngOnInit(): void {
     if(this.loginService.localStorage.getItem('user')){
@@ -42,11 +43,16 @@ constructor(
     this.loginService.loginVerification(this.loginForm.value.username, 
       this.loginForm.value.userpassword);
 
-     this.loginService.userChanged$.subscribe((user)=>
+     this.loginService.userChanged$.subscribe(
+       user=>
      { 
-
        this.navigatehome()
- 
+       },
+       error=>{
+          
+       },
+       ()=>{
+        this.isError=true;
        }
      
     )

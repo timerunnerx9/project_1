@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import {LoginService} from 'src/app/services/login.service';
-import { User } from 'src/app/services/user.service';
+import { User, UserService } from 'src/app/services/user.service';
+import {Router, CanActivate } from '@angular/router';
+
 
 
 @Component({
@@ -11,21 +13,19 @@ import { User } from 'src/app/services/user.service';
 
 })
 export class HomeComponent implements OnInit {
+user:User;
 
-  user: User;
-
-
-    private userChangedSub: Subscription;
 
 
   constructor(
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private router:Router) { }
 
   ngOnInit(): void {
-
-   
     this.user = this.loginService.getUser();
-    console.log(this.user);
+    if(this.loginService.localStorage.getItem('user')==''){
+      this.router.navigate(['/login'])
+    }
     
   }
 

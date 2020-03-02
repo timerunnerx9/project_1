@@ -2,8 +2,9 @@
 <h3> Reimbursement History [Manager View]</h3>
 <button (click)="onBack()"type="button" class="btn btn-primary" id="back">Back</button>
 
+<!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
 
-<table class="table" >
+<table class="table" id="reimbTable" >
   <thead>
     <tr>
       <th scope="col">#ID</th>
@@ -45,7 +46,16 @@
   </p >
 </table>
 
-
+<!-- <script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#reimbTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+  </script> -->
 
 
 
