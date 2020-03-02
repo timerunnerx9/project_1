@@ -19,7 +19,7 @@ export class AuthGuardService {
     //   return false;
     // }
     // return true;
-    if(this.loginService.getUser().user_id ==''){
+    if(!this.loginService.localStorage.getItem('user')){
       return false;
     }
     return true;
