@@ -17,7 +17,7 @@ export class FinreimbComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit(): void {
-    this.reimbService.getAllReimb();
+    this.reimbService.getAllPendingReimb();
     this.reimbService.reimbRecord$.subscribe(reimbrecords =>
       {
         this.reimbrecords = reimbrecords;

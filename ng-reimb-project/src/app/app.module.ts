@@ -14,6 +14,7 @@ import {LoginService} from './services/login.service';
 import {FormsModule} from '@angular/forms';
 import { NavComponent } from './components/nav/nav.component';
 import { FinreimbComponent } from './components/finreimb/finreimb.component';
+import { Fin2reimbComponent } from './components/fin2reimb/fin2reimb.component';
 
 
 
@@ -26,6 +27,7 @@ import { FinreimbComponent } from './components/finreimb/finreimb.component';
     LoginComponent,
     NavComponent,
     FinreimbComponent,
+    Fin2reimbComponent,
   
   ],
   imports: [

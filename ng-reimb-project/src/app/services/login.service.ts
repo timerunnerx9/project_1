@@ -4,27 +4,31 @@ import { Observable, Subject } from 'rxjs';
 import { User } from './user.service';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  constructor(private httpClient: HttpClient) { 
+  }
+
+
+
   userChanged = new Subject<User>();
 
   private user:User ={
-    user_id: 0,
+    user_id: '',
     username: '',
     password: '',
     firstname:'',
     lastname:'',
-    email:"",
-    role_id:0
+    email:'',
+    role_id:''
   }
 
   
 
-  constructor(private httpClient: HttpClient) { 
-
-  }
+  
 
 
 getUser(){
