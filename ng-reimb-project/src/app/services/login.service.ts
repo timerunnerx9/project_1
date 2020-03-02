@@ -4,33 +4,41 @@ import { Observable, Subject } from 'rxjs';
 import { User } from './user.service';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+  constructor(private httpClient: HttpClient) { 
+  }
+
+  public localStorage = localStorage;
+
+  
   userChanged = new Subject<User>();
+  public userChanged$ = this.userChanged.asObservable();
 
   private user:User ={
-    user_id: 0,
+    user_id: '',
     username: '',
     password: '',
     firstname:'',
     lastname:'',
-    email:"",
-    role_id:0
+    email:'',
+    role_id:''
   }
-
   
-
-  constructor(private httpClient: HttpClient) { 
-
-  }
+  error;
+  
 
 
 getUser(){
   return this.user;
 }
 
+deleteUser(){
+  this.user.user_id='';
+}
 
 
 loginVerification(username:string, password:string): void {
@@ -42,7 +50,8 @@ loginVerification(username:string, password:string): void {
 
 
   this.httpClient.post<User>(url,params,{withCredentials: true})
-    .subscribe((val)=>
+    .subscribe(
+      val=>
   {
     this.user.user_id =val.user_id,
     this.user.username=val.username,
@@ -50,14 +59,16 @@ loginVerification(username:string, password:string): void {
     this.user.firstname=val.firstname,
     this.user.lastname = val.lastname,
     this.user.email=val.email,
-    this.user.role_id=val.role_id},
-    error => console.log(error)
-  )
-
+    this.user.role_id=val.role_id
+  },
+  error => {this.error},
+  ()=>{
+    this.localStorage.setItem('user',this.user.user_id);
+    this.localStorage.setItem("role",this.user.role_id);
     this.userChanged.next(this.user);
-
   }
-
+    )
 
 }
 
+}

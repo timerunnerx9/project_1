@@ -1,5 +1,3 @@
-
-
     <title>Reimbursement</title>
     <h3> Reimbursement History</h3>
     <button (click)="onBack()"type="button" class="btn btn-primary" id="back">Back</button>
@@ -27,7 +25,7 @@
           <td>{{reimb.reimb_amount}}</td>
           <td>{{reimb.reimb_author}}</td>
           <td>{{reimb.reimb_submitted}}</td>
-          <td>{{reimb.description}}</td>
+          <td>{{reimb.reimb_description}}</td>
           <td>{{reimb.reimb_receipt}}</td>
           <td>{{reimb.reimb_status_id}}</td>
           <td>{{reimb.reimb_resolver}}</td>
@@ -74,9 +72,8 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary" id="submitbtn">Submit</button>
-     
     </form>
-  
+    </div>
    
 
 

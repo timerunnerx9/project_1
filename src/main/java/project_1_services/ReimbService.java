@@ -8,6 +8,7 @@ import java.util.List;
 
 import project_1_DAO.ReimbDAO;
 import project_1_POJO.Reimb;
+import project_1_POJO.tempReimb;
 
 public class ReimbService {
 	
@@ -22,8 +23,23 @@ public class ReimbService {
 			return ReimbDAO.viewPastTicketsByUserid(user_id);
 		}
 		
+
+		
 		public static ArrayList<Reimb> getAllTickets(int user_id){
 			return ReimbDAO.viewPastTickets(user_id);
+		}
+		
+		
+		public static ArrayList<tempReimb> getStringTicketsByUserid(int user_id){
+			return ReimbDAO.megaReimbDaoByUser(user_id);
+		}
+		
+		public static ArrayList<tempReimb> getPendingStringTickets(int user_id){
+			return ReimbDAO.megaPendingReimbDao(user_id);
+		}
+		
+		public static ArrayList<tempReimb> getStringTickets(int user_id){
+			return ReimbDAO.megaReimbDao(user_id);
 		}
 		
 		

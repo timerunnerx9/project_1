@@ -9,11 +9,14 @@
           <a class="nav-link" [routerLink]="['/empreimb']" routerLinkActive="router-link-active" >Reimbursement</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/finreimb']" routerLinkActive="router-link-active">FinReimb</a>
+        <li class="nav-item"  *ngIf="role==='2'">
+          <a class="nav-link" [routerLink]="['/finreimb']" routerLinkActive="router-link-active">FinPendingReimb</a>
+        </li>
+        <li class="nav-item" *ngIf="role==='2'">
+          <a class="nav-link"   [routerLink]="['/fin2reimb']" routerLinkActive="router-link-active">FinAllReimb</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Log out</a>
+          <a class="nav-link"  (click)="onLogout()" routerLinkActive="router-link-active">Log out</a>
         </li>
         
       </ul>

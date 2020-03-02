@@ -56,13 +56,30 @@ export class ReimbService {
 }
 
 
-
-
 getAllReimb(){
 
   const url = "http://localhost:8081/project_1/ReimbServlet";
   let params = new HttpParams()
   .set("actiontype","201")
+  
+  this.httpClient.get<Reimb[]>(url,{params,withCredentials:true})
+  .subscribe(data =>{
+    this.reimbRecords = data;
+    this.reimbRecordChange.next(this.reimbRecords);
+  },
+  (error: HttpErrorResponse) =>{
+    console.log(error.name + ' '+ error.message);
+  }
+  
+  );
+}
+
+
+getAllPendingReimb(){
+
+  const url = "http://localhost:8081/project_1/ReimbServlet";
+  let params = new HttpParams()
+  .set("actiontype","301")
   
   this.httpClient.get<Reimb[]>(url,{params,withCredentials:true})
   .subscribe(data =>{

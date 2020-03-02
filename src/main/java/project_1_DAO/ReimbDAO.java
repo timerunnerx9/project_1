@@ -12,12 +12,165 @@ import java.util.Calendar;
 
 import project_1.utils.ConnectionUtil;
 import project_1_POJO.Reimb;
+import project_1_POJO.tempReimb;
 
 
 public class ReimbDAO {
 	static Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
-//	public static void main(String[] args) {
-//	}
+	public static void main(String[] args) {
+		System.out.println(megaReimbDao(1));
+	}
+
+	public static ArrayList<tempReimb> megaReimbDao(int user_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			
+			ArrayList<tempReimb> ticketList = new ArrayList<tempReimb>();
+			String sql = " select r.reimb_id, r.reimb_amount, r.reimb_submitted, r.reimb_resolved, r.reimb_resolved, r.reimb_description, r.reimb_receipt,r.reimb_description, r.reimb_receipt, "+
+					"a.user_first_name as au, u.user_first_name as uu, s.reimb_status,t.reimb_type "+
+					"from ers_reimbursement r "+
+					"left join ers_users a on "+
+					"(a.ers_user_id = r.reimb_author) "+
+					"left join ers_users u on "+
+					"(u.ers_user_id = r.reimb_resolver) "+
+					"left join ers_reimbursement_status s on "+
+					"(s.reimb_status_id = r.reimb_status_id ) "+
+					"join ers_reimbursement_type t on "+
+					"(t.reimb_type_id = r.reimb_type_id)";
+
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				String reimb_id = String.valueOf(result.getInt("reimb_id"));
+				String reimb_amount = String.valueOf(result.getDouble("reimb_amount"));
+				
+				String reimb_submitted = dateFormat.format(result.getTimestamp("reimb_submitted"));
+				String reimb_resolved = result.getTimestamp("reimb_resolved")==null? "-":dateFormat.format(result.getTimestamp("reimb_resolved"));
+
+			
+				String reimb_description = result.getString("reimb_description");
+				
+				String reimb_receipt = String.valueOf(result.getBoolean("reimb_receipt"));
+				String reimb_author = result.getString("au");
+				String reimb_resolver = result.getString("uu");
+				String reimb_status_id = result.getString("reimb_status");
+				String reimb_type_id = result.getString("reimb_type");
+//				System.out.println(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
+//						reimb_status_id,reimb_type_id));
+				ticketList.add(new tempReimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,reimb_description,reimb_receipt,reimb_author,reimb_resolver,
+						reimb_status_id,reimb_type_id));
+						
+			}return ticketList;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}return null;
+	}
+	
+	
+	
+	
+	public static ArrayList<tempReimb> megaPendingReimbDao(int user_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			ArrayList<tempReimb> ticketList = new ArrayList<tempReimb>();
+			String sql = " select r.reimb_id, r.reimb_amount, r.reimb_submitted, r.reimb_resolved, r.reimb_resolved, r.reimb_description, r.reimb_receipt,r.reimb_description, r.reimb_receipt, "+
+					"a.user_first_name as au, u.user_first_name as uu, s.reimb_status,t.reimb_type "+
+					"from ers_reimbursement r "+
+					"left join ers_users a on "+
+					"(a.ers_user_id = r.reimb_author) "+
+					"left join ers_users u on "+
+					"(u.ers_user_id = r.reimb_resolver) "+
+					"left join ers_reimbursement_status s on "+
+					"(s.reimb_status_id = r.reimb_status_id ) "+
+					"join ers_reimbursement_type t on "+
+					"(t.reimb_type_id = r.reimb_type_id) where r.reimb_status_id = 1";
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				String reimb_id = String.valueOf(result.getInt("reimb_id"));
+				String reimb_amount = String.valueOf(result.getDouble("reimb_amount"));
+				
+				String reimb_submitted = dateFormat.format(result.getTimestamp("reimb_submitted"));
+				String reimb_resolved = result.getTimestamp("reimb_resolved")==null? "-":dateFormat.format(result.getTimestamp("reimb_resolved"));
+			
+				String reimb_description = result.getString("reimb_description");
+				
+				String reimb_receipt = String.valueOf(result.getBoolean("reimb_receipt"));
+				String reimb_author = result.getString("au");
+				String reimb_resolver = result.getString("uu");
+				String reimb_status_id = result.getString("reimb_status");
+				String reimb_type_id = result.getString("reimb_type");
+//				System.out.println(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
+//						reimb_status_id,reimb_type_id));
+				ticketList.add(new tempReimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,reimb_description,reimb_receipt,reimb_author,reimb_resolver,
+						reimb_status_id,reimb_type_id));
+						
+			}return ticketList;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}return null;
+	}
+	
+	
+	public static ArrayList<tempReimb> megaReimbDaoByUser(int user_id) {
+		try(Connection connection =  ConnectionUtil.getConnection()){
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			ArrayList<tempReimb> ticketList = new ArrayList<tempReimb>();
+			String sql = " select r.reimb_id, r.reimb_amount, r.reimb_submitted, r.reimb_resolved, r.reimb_resolved, r.reimb_description, r.reimb_receipt,r.reimb_description, r.reimb_receipt, "+
+					"a.user_first_name as au, u.user_first_name as uu, s.reimb_status,t.reimb_type "+
+					"from ers_reimbursement r "+
+					"left join ers_users a on "+
+					"(a.ers_user_id = r.reimb_author) "+
+					"left join ers_users u on "+
+					"(u.ers_user_id = r.reimb_resolver) "+
+					"left join ers_reimbursement_status s on "+
+					"(s.reimb_status_id = r.reimb_status_id ) "+
+					"join ers_reimbursement_type t on "+
+					"(t.reimb_type_id = r.reimb_type_id) where r.reimb_author = ?";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, user_id);
+			ResultSet result = statement.executeQuery();
+			while(result.next()) {
+				String reimb_id = String.valueOf(result.getInt("reimb_id"));
+				String reimb_amount = String.valueOf(result.getDouble("reimb_amount"));
+				
+				String reimb_submitted = dateFormat.format(result.getTimestamp("reimb_submitted"));
+							
+				String reimb_resolved = result.getTimestamp("reimb_resolved")==null? "-":dateFormat.format(result.getTimestamp("reimb_resolved"));
+				
+				
+				String reimb_description = result.getString("reimb_description");
+				
+				String reimb_receipt = String.valueOf(result.getBoolean("reimb_receipt"));
+				String reimb_author = result.getString("au");
+				String reimb_resolver = result.getString("uu");
+				String reimb_status_id = result.getString("reimb_status");
+				String reimb_type_id = result.getString("reimb_type");
+//				System.out.println(new Reimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,description,reimb_receipt,reimb_author,reimb_resolver,
+//						reimb_status_id,reimb_type_id));
+				ticketList.add(new tempReimb(reimb_id, reimb_amount, reimb_submitted,reimb_resolved,reimb_description,reimb_receipt,reimb_author,reimb_resolver,
+						reimb_status_id,reimb_type_id));
+						
+			}return ticketList;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}return null;
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
 
 	// method used to retrieve all reimbursements from specific employee.	
 	public static ArrayList<Reimb> viewPastTicketsByUserid(int user_id) {

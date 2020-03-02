@@ -36,8 +36,9 @@ export class EmpReimbComponent implements OnInit {
     this.reimbService.getReimbByUserid();
     this.reimbService.reimbRecord$.subscribe(reimbrecords =>
       {
+        console.log(reimbrecords)
         this.reimbrecords = reimbrecords;
-       
+        console.log(reimbrecords)
       });
     
   }

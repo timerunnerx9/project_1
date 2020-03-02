@@ -43,12 +43,19 @@ public class ReimbServlet extends HttpServlet {
 		int userid = Integer.parseInt(c[0].getValue());
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		switch (actiontype) {
-		case "101" : out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
-		break;
-		case "201": out.print(om.writeValueAsString(ReimbService.getAllTickets(userid)));
-		}
+//		switch (actiontype) {
+//		case "101" : out.print(om.writeValueAsString(ReimbService.getTicketsByUserid(userid)));
+//		break;
+//		case "201": out.print(om.writeValueAsString(ReimbService.getAllTickets(userid)));
+//		}
 		
+		switch (actiontype) {
+		case "101" : out.print(om.writeValueAsString(ReimbService.getStringTicketsByUserid((userid))));
+		break;
+		case "201": out.print(om.writeValueAsString(ReimbService.getStringTickets(userid)));
+		break;
+		case "301": out.print(om.writeValueAsString(ReimbService.getPendingStringTickets(userid)));
+		}
 	}
 
 

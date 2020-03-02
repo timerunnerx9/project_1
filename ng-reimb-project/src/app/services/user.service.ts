@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 
 
 export interface User{
-  user_id : number;
+  user_id : string;
   username: string;
   password: string;
   firstname: string;
   lastname: string;
   email: string;
-  role_id: number;
+  role_id: string;
 }
 
 

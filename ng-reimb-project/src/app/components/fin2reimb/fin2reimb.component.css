@@ -19,8 +19,3 @@ button{
     background-color: gray;
     width: 80px;
 }
-
-.hoverstatus:hover{
-    background-color:orange;
-    color:white;
-}
