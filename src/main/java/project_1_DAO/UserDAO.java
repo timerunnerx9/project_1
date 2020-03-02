@@ -6,11 +6,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import project_1.utils.ConnectionUtil;
+import project_1.utils.PassHash;
 import project_1_POJO.User;
 /*
  * DAO used to get information from specific user called. 
  * */
 public class UserDAO {
+	public static void main(String[] args) {
+		
+//		updatePassByID(3);
+//		System.out.println(PassHash.checkPass("294597053",getUserByUsername("davecen9").getPassword()));
+//			
+		}
+//		
+		
+		
+	
 
 	public static User getUserByID(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
@@ -67,9 +78,37 @@ public class UserDAO {
 	}
 	
 	
-	
-	
-	
+	public static void updatePassByID(int userid) {
+		try(Connection connection = ConnectionUtil.getConnection()){
+			String originPassword;
+			String hashedPassword;
+			String sql = "SELECT * FROM ers_users WHERE ers_user_id = ?"; 
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, userid);
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				originPassword = result.getString("ers_password");
+				String sql1 = "UPDATE ers_users SET ers_password = ? WHERE "+
+						"ers_user_id = ? RETURNING*";
+				hashedPassword = PassHash.hashingPass(originPassword);
+				PreparedStatement statement1 = connection.prepareStatement(sql1);
+				statement1.setString(1, hashedPassword);
+				statement1.setInt(2,userid);
+				ResultSet result2 = statement1.executeQuery();
+				if(result2.next()) {
+					System.out.println("Password Hashed: "+hashedPassword);
+				}
+			}
+
+			
+			
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 
 
