@@ -14,7 +14,7 @@ import project_1_POJO.User;
 public class UserDAO {
 	public static void main(String[] args) {
 		
-//		updatePassByID(3);
+		updatePassByID(4);
 //		System.out.println(PassHash.checkPass("294597053",getUserByUsername("davecen9").getPassword()));
 //			
 		}

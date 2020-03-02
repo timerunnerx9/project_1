@@ -25,17 +25,17 @@ constructor(
   ) { }
 
 
-  private user;
+  // private user;
 
   isError:boolean = false; 
 
   ngOnInit(): void {
-    if(this.loginService.localStorage.getItem('user')){
-      this.router.navigate(['/home'])
-    }
+    // if(this.loginService.localStorage.getItem('user')){
+    //   this.router.navigate(['/home'])
+    // }
   }
 
-   navigatehome(){
+  navigatehome(){
      this.router.navigate(['/home'])
    }
  
