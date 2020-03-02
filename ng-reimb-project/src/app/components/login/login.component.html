@@ -44,8 +44,8 @@
             ngModel name="userpassword"
             required>
           </div>
-          <div id= "errormessage" *ngIf="isError" class="form-group form-check">
-            <p class="form-check-label" >Incorrect Password! Please try again!</p>
+          <div id= "errormessage" *ngIf="isError==true" class="form-group form-check">
+            <p class="form-check-label" >Incorrect username or password! Please try again!</p>
           </div>
           <button type="submit" class="btn btn-primary"
           [disabled]="!f1.valid">Login</button>
