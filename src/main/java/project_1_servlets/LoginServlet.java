@@ -53,25 +53,6 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-//		ObjectMapper om = new ObjectMapper();
-//		LoginInfo loginInfo = om.readValue(line, LoginInfo.class);
-		
-//		LoginInfo loginInfo = new Gson().fromJson(request.getReader(), LoginInfo.class);
-		
-//		String username = loginInfo.getUsername();
-//		String password = loginInfo.getUserPassword();
-
-//		System.out.println(username);
-//		System.out.println(password);
-//		System.out.println(UserService.getUserJson(username));
-//		out.print(UserService.getUserJson(username));
-//	
-//		System.out.println(request.getReader().readLine());
-//		String querystring = request.getQueryString();
-		
-	
-
-			
 		String username = request.getParameter("name");
 		String password = request.getParameter("password");
 
