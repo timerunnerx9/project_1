@@ -28,8 +28,8 @@ export class LoginService {
     role_id:''
   }
   
-  error;
-  
+  errorChanged = new Subject<boolean>();
+  public errorChanged$ = this.errorChanged.asObservable();
 
 
 getUser(){
@@ -61,7 +61,7 @@ loginVerification(username:string, password:string): void {
     this.user.email=val.email,
     this.user.role_id=val.role_id
   },
-  error => {this.error},
+  error => {this.errorChanged.next(true)},
   ()=>{
     this.localStorage.setItem('user',this.user.user_id);
     this.localStorage.setItem("role",this.user.role_id);

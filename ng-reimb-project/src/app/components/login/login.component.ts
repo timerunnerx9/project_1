@@ -49,13 +49,19 @@ constructor(
        this.navigatehome()
        },
        error=>{
-          
+        // this.isError=true;
        },
        ()=>{
-        this.isError=true;
+        
+      
        }
+     )
+
+       this.loginService.errorChanged$.subscribe(
+         (result)=> this.isError = result
+       )
      
-    )
+    
   }
 }
 
