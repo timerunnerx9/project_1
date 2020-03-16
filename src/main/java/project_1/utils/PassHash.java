@@ -9,7 +9,7 @@ public class PassHash {
 
 	
 	public static String hashingPass(String password) {
-		String hashed = BCrypt.hashpw(password, BCrypt.gensalt(8));
+		String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
 		return hashed;
 	}
 
