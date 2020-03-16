@@ -14,14 +14,14 @@ import project_1_POJO.User;
 public class UserDAO {
 	public static void main(String[] args) {
 		
-		updatePassByID(4);
+//		updatePassByID(1);
+		
+		
 //		System.out.println(PassHash.checkPass("294597053",getUserByUsername("davecen9").getPassword()));
 //			
 		}
 //		
 		
-		
-	
 
 	public static User getUserByID(int userid) {
 		try(Connection connection = ConnectionUtil.getConnection()){
