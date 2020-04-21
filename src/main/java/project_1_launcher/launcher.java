@@ -10,9 +10,10 @@ public class launcher {
 		2.run UserDAO.updatePassByID(1)
 		3.print it out to test if it's true
 		
+		to start the backend, you start the tomcat server
 		*/
-		UserDAO.updatePassByID(1);
+		UserDAO.updatePassByID(5);
 		
-		System.out.println(PassHash.checkPass("294597053",UserDAO.getUserByUsername("davecen9").getPassword()));
+		System.out.println(PassHash.checkPass("test",UserDAO.getUserByUsername("test").getPassword()));
 	}
 }
